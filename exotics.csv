@@ -1,0 +1,49 @@
+Experiment,Paper ID#,Case,author,year,Biosolid level (Mg ha-1),Ne,Error in the article,Me,Se,Nc,Mc,Sc,year_restoration,time,Temp,Precip,Mixture (yes/no),Disturbance levels,Severe Disturbance,Burn (Y/N),Seeded (Y/N),Multiple application (Y/N),Biome,Location,Coordinates (Latitude),Coordinate (longitude)
+T,11,1,Wallace,2016,20,4,SE,2.4,3.4,4,0.1,0.2,8,9,16.1,33.5,No,low,N,N,N,N,Temperate grassand,"Ashcroft Ranch, BC",38.18333,-1.83333
+T,11,2,Wallace,2016,60,4,SE,6.9,3.6,4,0.1,0.2,8,9,16.1,33.5,No,low,N,N,N,N,Temperate grassand,"Ashcroft Ranch, BC",38.18333,-1.83333
+T,11,1,Wallace,2016,20,4,SE,0,0,4,0,0,8,9,16.1,33.5,No,low,N,N,N,N,Temperate grassand,"Ashcroft Ranch, BC",38.18333,-1.83333
+T,11,2,Wallace,2016,60,4,SE,0.6,1,4,0,0,8,9,16.1,33.5,No,low,N,N,N,N,Temperate grassand,"Ashcroft Ranch, BC",38.18333,-1.83333
+T,11,1,Wallace,2016,20,4,SE,16,5.8,4,10.2,7.6,8,9,16.1,33.5,No,low,N,N,N,N,Temperate grassand,"Ashcroft Ranch, BC",38.18333,-1.83333
+T,11,2,Wallace,2016,60,4,SE,12.1,3.2,4,10.2,7.6,8,9,16.1,33.5,No,low,N,N,N,N,Temperate grassand,"Ashcroft Ranch, BC",38.18333,-1.83333
+Y,3,6,Blumenthal,2017,22.4,6,SD ,75.3,86,6,36.8,37.7,17,18,6.8,38.4,No,low,N,N,N,N,Shrubland,"Cheyenne, Wyoming, USA",41.21286,-104.85183
+Y,3,7,Blumenthal,2017,22.4,6,SD ,443.5,239.1,6,373.3,272.6,22,23,6.8,38.4,No,low,N,N,N,N,Shrubland,"Cheyenne, Wyoming, USA",41.21286,-104.85183
+YY,156,7,Brofas,2000,10,3,,38.7,93,3,177,86,4,5,14.9,74.2,No,high,Y,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691
+YY,156,8,Brofas,2000,20,3,,52.3,113,3,177,86,4,5,14.9,74.2,No,high,Y,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691
+YY,156,9,Brofas,2000,40,3,,71.1,108,3,177,86,4,5,14.9,74.2,No,high,Y,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691
+YY,156,10,Brofas,2000,60,3,,99,121,3,177,86,4,5,14.9,74.2,No,high,Y,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691
+YY,156,11,Brofas,2000,80,3,,122.2,98,3,177,86,4,5,14.9,74.2,No,high,Y,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691
+YY,156,12,Brofas,2000,120,3,,142,98,3,177,86,4,5,14.9,74.2,No,high,Y,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691
+ZZ,153,1,Carson,1988,8.96,3,N,52,47,2,89,50,1,2,11.1,104.8,No,medium,Y,N,Y,Y,Temperate seasonal forest,"Ohio, USA",39.5,-84.73333
+ZZ,153,3,Carson,1988,17.92,3,N,130,118,2,161,90,2,3,11.1,104.8,No,medium,Y,N,Y,Y,Temperate seasonal forest,"Ohio, USA",39.5,-84.73333
+ZZ,153,5,Carson,1988,26.94,3,N,374,339,2,61,34,3,4,11.1,104.8,No,medium,Y,N,Y,Y,Temperate seasonal forest,"Ohio, USA",39.5,-84.73333
+X,165,1,Gonzalez Polo,2015,40,4,N,2,0.8,4,1.5,1.28,6,7,9.4,56.5,Yes,medium,Y,Y,N,N,Shrubland,"Patagonia, Argentina",-40.57333,-70.8325
+V,7,1,Meyer,2004,5,4,SE,0.2,0.4,4,0.5,0.8,0.17,1,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,2,Meyer,2004,10,4,SE,0.5,0.6,4,1.5,0.8,0.17,1,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,3,Meyer,2004,20,4,SE,0.2,0.2,4,2.5,0.8,0.17,1,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,4,Meyer,2004,40,4,SE,0.3,0.4,4,3.5,0.8,0.17,1,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,5,Meyer,2004,80,4,SE,0.5,0.4,4,4.5,0.8,0.17,1,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,6,Meyer,2004,5,4,SE,0.3,0.2,4,1.1,0.4,1.17,2,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,7,Meyer,2004,10,4,SE,0.4,0.4,4,1.1,0.4,1.17,2,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,8,Meyer,2004,20,4,SE,0.3,0.2,4,1.1,0.4,1.17,2,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,9,Meyer,2004,40,4,SE,2.4,4.8,4,1.1,0.4,1.17,2,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,10,Meyer,2004,80,4,SE,0,0,4,1.1,0.4,1.17,2,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,11,Meyer,2004,5,4,SE,1.6,1.2,4,1.1,2,2.17,3,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,12,Meyer,2004,10,4,SE,0.6,0.4,4,1.1,2,2.17,3,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,13,Meyer,2004,20,4,SE,2,4,4,1.1,2,2.17,3,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,14,Meyer,2004,40,4,SE,1.9,2.6,4,1.1,2,2.17,3,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,15,Meyer,2004,80,4,SE,0.3,0.2,4,6.7,2.8,2.17,3,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,16,Meyer,2004,5,4,SE,3.6,3.8,4,6.7,2.8,3.17,4,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,17,Meyer,2004,10,4,SE,1.7,3.4,4,6.7,2.8,3.17,4,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,18,Meyer,2004,20,4,SE,0.3,0.4,4,6.7,2.8,3.17,4,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,19,Meyer,2004,40,4,SE,4.5,3.8,4,6.7,2.8,3.17,4,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+V,7,20,Meyer,2004,80,4,SE,3.2,3.8,4,6.7,2.8,3.17,4,5.3,45.2,Yes,medium,Y,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069
+U,8,1,Moreno-Penaranda,2004,350,2,SD ,0.07,0.03,2,0.11,0.04,5,6,14.5,77.8,Yes,high,Y,N,Y,N,Shrubland,"Catalonia, Spain",42.03611,2.81722
+X,5,1,Kowaljow,2010,40,4,N,0.04,0.04,4,0.01,0.01,2,3,9.4,56.5,Yes,medium,Y,Y,N,N,Shrubland,"Bariloche, Argentina",-40.57333,-70.8325
+X,5,2,Kowaljow,2010,40,4,N,0.04,0.04,4,0.01,0.01,2,3,9.4,56.5,Yes,medium,Y,Y,N,N,Shrubland,"Bariloche, Argentina",-40.57333,-70.8325
+X,5,3,Kowaljow,2010,40,4,N,0.01,0.01,4,0.01,0.01,3,4,9.4,56.5,Yes,medium,Y,Y,N,N,Shrubland,"Bariloche, Argentina",-40.57333,-70.8325
+X,5,4,Kowaljow,2010,40,4,N,0.01,0.01,4,0.01,0.01,3,4,9.4,56.5,Yes,medium,Y,Y,N,N,Shrubland,"Bariloche, Argentina",-40.57333,-70.8325
+A,173,1,Gardner,unpublished,50,16,SD ,6.96,15.1,16,5.34,11.3,17,18,2.3,44.8,No,high,Y,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.47311,-121.0218
+A,173,2,Gardner,unpublished,100,16,SD ,2.72,7.31,16,5.34,11.3,17,18,2.3,44.8,No,high,Y,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.47311,-121.0218
+A,173,3,Gardner,unpublished,150,16,SD ,1.23,4.16,16,5.34,11.3,17,18,2.3,44.8,No,high,Y,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.47311,-121.0218
+A,173,4,Gardner,unpublished,200,16,SD ,4.53,13.6,16,5.34,11.3,17,18,2.3,44.8,No,high,Y,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.47311,-121.0218
+A,173,5,Gardner,unpublished,250,16,SD ,5.41,15.7,16,5.34,11.3,17,18,2.3,44.8,No,high,Y,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.47311,-121.0218

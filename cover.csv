@@ -1,0 +1,180 @@
+Experiment,Paper ID#,Case,author,year,Biosolid level (Mg ha-1),Ne,Error in the article,Me,Se,seimp,Nc,Mc,Sc,scimp,year_restoration,yeartrans,Temp,Precip,Level P (Mg ha-1),TOC (Mg ha-1),TN (Mg ha-1),Mixture,Disturbances levels,Burn,Seeded,Multiple application ,Biome,Location,Coordinates (Latitude),Coordinate (longitude),S.dist
+N,124,1,Albaladejo,2000,195,12,SE,90.29,14.38,14.38,12,5.84,7.64,7.64,5,6,16.1,33.5,2.6,44.85,2.477,N ,low,N,N,N,Temperate grassland,"Murcia, Spain",38.18333,-1.83333,No
+N,124,2,Albaladejo,2000,130,12,SE,83.55,18.87,18.87,12,5.84,7.64,7.64,5,6,16.1,33.5,2.6,29.9,1.651,N ,low,N,N,N,Temperate grassland,"Murcia, Spain",38.18333,-1.83333,No
+N,124,3,Albaladejo,2000,260,12,SE,99.37,22.47,22.47,12,5.84,7.64,7.64,5,6,16.1,33.5,2.6,59.8,3.302,N ,low,N,N,N,Temperate grassland,"Murcia, Spain",38.18333,-1.83333,No
+N,124,4,Albaladejo,2000,65,12,SE,52.54,23.82,23.82,12,5.84,7.64,7.64,5,6,16.1,33.5,2.6,14.95,0.826,N ,low,N,N,N,Temperate grassland,"Murcia, Spain",38.18333,-1.83333,No
+AAA,26,1,Borden,2011,34,9,,136,,7.116042975,28,67,,5.181905463,10,11,8.7,53.2,0.007208,8.432,0.962,N ,high,N,Y,N,Shrubland,"Salt lake, city, Utah, USA",40.52187,-112.14612,Yes
+AAA,26,2,Borden,2011,45,23,,115,,6.017242222,28,67,,5.181905463,10,11,8.7,53.2,0.00954,8.432,0.962,N ,high,N,Y,N,Shrubland,"Salt lake, city, Utah, USA",40.52187,-112.14612,Yes
+AAA,26,3,Borden,2011,67,15,,108,,5.650975304,28,67,,5.181905463,10,11,8.7,53.2,0.014204,8.432,0.962,N ,high,N,Y,N,Shrubland,"Salt lake, city, Utah, USA",40.52187,-112.14612,Yes
+YY,156,1,Brofas,2000,10,3,,32.7,,1.710989745,3,4.4,,0.340304239,1,2,14.9,74.2,0.19,3.9,0.22,N ,high,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691,Yes
+YY,156,2,Brofas,2000,20,3,,35.5,,1.857496512,3,4.4,,0.340304239,1,2,14.9,74.2,0.38,7.8,0.44,N ,high,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691,Yes
+YY,156,3,Brofas,2000,40,3,,48.5,,2.537706502,3,4.4,,0.340304239,1,2,14.9,74.2,0.76,15.6,0.88,N ,high,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691,Yes
+YY,156,4,Brofas,2000,60,3,,56.1,,2.935367727,3,4.4,,0.340304239,1,2,14.9,74.2,1.14,23.4,1.32,N ,high,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691,Yes
+YY,156,5,Brofas,2000,80,3,,77.2,,4.039400865,3,4.4,,0.340304239,1,2,14.9,74.2,1.52,31.2,1.76,N ,high,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691,Yes
+YY,156,6,Brofas,2000,120,3,,86.4,,4.520780243,3,4.4,,0.340304239,1,2,14.9,74.2,2.28,46.8,2.64,N ,high,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691,Yes
+YY,156,7,Brofas,2000,10,3,,31.2,,1.632503977,3,9.1,,0.70381104,4,5,14.9,74.2,0.19,3.9,0.22,N ,high,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691,Yes
+YY,156,8,Brofas,2000,20,3,,35.3,,1.847031743,3,9.1,,0.70381104,4,5,14.9,74.2,0.38,7.8,0.44,N ,high,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691,Yes
+YY,156,9,Brofas,2000,40,3,,38.4,,2.009235664,3,9.1,,0.70381104,4,5,14.9,74.2,0.76,15.6,0.88,N ,high,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691,Yes
+YY,156,10,Brofas,2000,60,3,,47,,2.459220734,3,9.1,,0.70381104,4,5,14.9,74.2,1.14,23.4,1.32,N ,high,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691,Yes
+YY,156,11,Brofas,2000,80,3,,54.7,,2.862114344,3,9.1,,0.70381104,4,5,14.9,74.2,1.52,31.2,1.76,N ,high,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691,Yes
+YY,156,12,Brofas,2000,120,3,,61.2,,3.202219339,3,9.1,,0.70381104,4,5,14.9,74.2,2.28,46.8,2.64,N ,high,N,Y,N,Shrubland,"Central Greece, area covered with piles of calcareous spoilsderived from bauxite mining",39.317167,21.89691,Yes
+CCC,30,1,Brown,2014,336,3,SD,93.9,1.69,1.69,3,5.08,3.95,3.95,12,13,14,108.7,,,,Y,high,N,Y,N,Temperate seasonal forest,"Joplin, Missouri, USA",37.08416,-94.51305,Yes
+CCC,30,2,Brown,2014,112,3,SD,50.17,6.78,6.78,3,5.08,3.95,3.95,12,13,14,108.7,,,,Y,high,N,Y,N,Temperate seasonal forest,"Joplin, Missouri, USA",37.08416,-94.51305,Yes
+BBB,29,1,Brown,2009,224,3,SD,93.38,8.3,8.3,3,3.37,2.82,2.82,7,8,-0.6,57,,,,Y,high,N,Y,N,Boreal forest,"Leadville, CO, USA",39.2,-106.35,Yes
+BBB,29,2,Brown,2009,224,3,SD,15.09,8.58,8.58,3,3.37,2.82,2.82,7,8,-0.6,57,,,,Y,high,N,Y,N,Boreal forest,"Leadville, CO, USA",39.2,-106.35,Yes
+BBB,29,3,Brown,2009,224,3,SD,9.99,8.9,8.9,3,3.37,2.82,2.82,7,8,-0.6,57,,,,Y,high,N,Y,N,Boreal forest,"Leadville, CO, USA",39.2,-106.35,Yes
+BBB,29,4,Brown,2009,224,3,SD,50.16,9.99,9.99,3,3.37,2.82,2.82,7,8,-0.6,57,,,,Y,high,N,Y,N,Boreal forest,"Leadville, CO, USA",39.2,-106.35,Yes
+BBB,29,5,Brown,2009,224,3,SD,23.45,15.96,15.96,3,3.37,2.82,2.82,7,8,-0.6,57,,,,Y,high,N,Y,N,Boreal forest,"Leadville, CO, USA",39.2,-106.35,Yes
+G,132,1,Diaz,1997,6.5,5,,64.59,,3.379597175,5,3.63,,0.280750997,1,2,16.1,36.1,0.039,1.495,0.078,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,2,Diaz,1997,13,5,,89.72,,4.69449541,5,3.63,,0.280750997,1,2,16.1,36.1,0.078,2.99,0.156,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,3,Diaz,1997,19.5,5,,89.72,,4.69449541,5,3.63,,0.280750997,1,2,16.1,36.1,0.117,4.485,0.234,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,4,Diaz,1997,26,5,,97.92,,5.123550942,5,3.63,,0.280750997,1,2,16.1,36.1,0.156,5.98,0.312,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,5,Diaz,1997,6.5,5,,69.57,,3.640169925,5,5.09,,0.393670131,2,3,16.1,36.1,0.039,1.495,0.078,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,6,Diaz,1997,13,5,,89.72,,4.69449541,5,5.09,,0.393670131,2,3,16.1,36.1,0.078,2.99,0.156,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,7,Diaz,1997,19.5,5,,89.72,,4.69449541,5,5.09,,0.393670131,2,3,16.1,36.1,0.117,4.485,0.234,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,8,Diaz,1997,26,5,,94.81,,4.960823783,5,5.09,,0.393670131,2,3,16.1,36.1,0.156,5.98,0.312,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,9,Diaz,1997,6.5,5,,44.55,,2.331027313,5,9.03,,0.698397109,3,4,16.1,36.1,0.039,1.495,0.078,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,10,Diaz,1997,13,5,,81.72,,4.275904647,5,9.03,,0.698397109,3,4,16.1,36.1,0.078,2.99,0.156,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,11,Diaz,1997,19.5,5,,84.74,,4.43392266,5,9.03,,0.698397109,3,4,16.1,36.1,0.117,4.485,0.234,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,12,Diaz,1997,26,5,,97.82,,5.118318558,5,9.03,,0.698397109,3,4,16.1,36.1,0.156,5.98,0.312,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,13,Diaz,1997,6.5,5,,39.46,,2.06469894,5,8.1,,0.626469168,4,5,16.1,36.1,0.039,1.495,0.078,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,14,Diaz,1997,13,5,,79.75,,4.172826671,5,8.1,,0.626469168,4,5,16.1,36.1,0.078,2.99,0.156,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,15,Diaz,1997,19.5,5,,89.72,,4.69449541,5,8.1,,0.626469168,4,5,16.1,36.1,0.117,4.485,0.234,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,16,Diaz,1997,26,5,,94.81,,4.960823783,5,8.1,,0.626469168,4,5,16.1,36.1,0.156,5.98,0.312,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,17,Diaz,1997,6.5,5,,37.49,,1.961620964,5,6.13,,0.474105679,5,6,16.1,36.1,0.039,1.495,0.078,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,18,Diaz,1997,13,5,,74.56,,3.901265913,5,6.13,,0.474105679,5,6,16.1,36.1,0.078,2.99,0.156,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,19,Diaz,1997,19.5,5,,79.54,,4.161838664,5,6.13,,0.474105679,5,6,16.1,36.1,0.117,4.485,0.234,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+G,132,20,Diaz,1997,26,5,,84.74,,4.43392266,5,6.13,,0.474105679,5,6,16.1,36.1,0.156,5.98,0.312,N ,low,N,N,N,Temperate grassland,"Abanilla, Spain",38.2062817,-1.0434985,No
+QQQ,169,1,Ferrer,2011,0.5,1,,89.11,,4.662577864,1,1.72,,0.133028021,1,2,17.4,52.5,,0.094,0.00275,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,2,Ferrer,2011,2,1,,82.81,,4.332937638,1,1.72,,0.133028021,1,2,17.4,52.5,,0.376,0.011,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,3,Ferrer,2011,4,1,,96.7,,5.059715851,1,1.72,,0.133028021,1,2,17.4,52.5,,0.752,0.022,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,4,Ferrer,2011,4,1,,94.84,,4.962393498,1,1.72,,0.133028021,1,2,17.4,52.5,,0.752,0.022,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,5,Ferrer,2011,0.5,1,,83.38,,4.36276223,1,4.73,,0.365827057,2,3,17.4,52.5,,0.094,0.00275,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,6,Ferrer,2011,2,1,,14.61,,0.764451381,1,4.73,,0.365827057,2,3,17.4,52.5,,0.376,0.011,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,7,Ferrer,2011,4,1,,65.33,,3.41831682,1,4.73,,0.365827057,2,3,17.4,52.5,,0.752,0.022,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,8,Ferrer,2011,4,1,,34.67,,1.81406772,1,4.73,,0.365827057,2,3,17.4,52.5,,0.752,0.022,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,9,Ferrer,2011,0.5,1,,92.71,,4.850943708,1,69.04,,5.339682883,1,2,17.4,52.5,,0.094,0.00275,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,10,Ferrer,2011,2,1,,96.76,,5.062855282,1,69.04,,5.339682883,1,2,17.4,52.5,,0.376,0.011,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,11,Ferrer,2011,4,1,,84.76,,4.434969137,1,69.04,,5.339682883,1,2,17.4,52.5,,0.752,0.022,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,12,Ferrer,2011,0.5,1,,78.77,,4.121549303,1,63.05,,4.876405066,2,3,17.4,52.5,,0.094,0.00275,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,13,Ferrer,2011,2,1,,85.25,,4.460607821,1,63.05,,4.876405066,2,3,17.4,52.5,,0.376,0.011,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,14,Ferrer,2011,4,1,,89.79,,4.698158079,1,63.05,,4.876405066,2,3,17.4,52.5,,0.752,0.022,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+QQQ,169,15,Ferrer,2011,4,1,,75.04,,3.926381359,1,63.05,,4.876405066,2,3,17.4,52.5,,0.752,0.022,Y,high,N,Y,N,Shrubland,"Arjona and Porcuna, Spain",37.91278,-4.10444,No
+M,125,1,Fresquez,1990,22.5,4,,37,,1.93598228,4,30,,2.320256177,1,2,10.4,36.7,0.0359775,,1.0936575,N ,low,N,N,N,Shrubland,"Rio Puerco, New-Mexico, USA",35.648301,-106.58594,No
+M,125,2,Fresquez,1990,45,4,,35,,1.831334589,4,30,,2.320256177,1,2,10.4,36.7,0.071955,,2.187315,N ,low,N,N,N,Shrubland,"Rio Puerco, New-Mexico, USA",35.648301,-106.58594,No
+M,125,3,Fresquez,1990,90,4,,36,,1.883658435,4,30,,2.320256177,1,2,10.4,36.7,0.14391,,4.37463,N ,low,N,N,N,Shrubland,"Rio Puerco, New-Mexico, USA",35.648301,-106.58594,No
+M,125,4,Fresquez,1990,22.5,4,,54,,2.825487652,4,35,,2.70696554,2,3,10.4,36.7,0.0359775,,1.0936575,N ,low,N,N,N,Shrubland,"Rio Puerco, New-Mexico, USA",35.648301,-106.58594,No
+M,125,5,Fresquez,1990,45,4,,52,,2.720839961,4,35,,2.70696554,2,3,10.4,36.7,0.071955,,2.187315,N ,low,N,N,N,Shrubland,"Rio Puerco, New-Mexico, USA",35.648301,-106.58594,No
+M,125,6,Fresquez,1990,90,4,,55,,2.877811497,4,35,,2.70696554,2,3,10.4,36.7,0.14391,,4.37463,N ,low,N,N,N,Shrubland,"Rio Puerco, New-Mexico, USA",35.648301,-106.58594,No
+M,125,7,Fresquez,1990,22.5,4,,42,,2.197601507,4,31,,2.39759805,3,4,10.4,36.7,0.0359775,,1.0936575,N ,low,N,N,N,Shrubland,"Rio Puerco, New-Mexico, USA",35.648301,-106.58594,No
+M,125,8,Fresquez,1990,45,4,,37,,1.93598228,4,31,,2.39759805,3,4,10.4,36.7,0.071955,,2.187315,N ,low,N,N,N,Shrubland,"Rio Puerco, New-Mexico, USA",35.648301,-106.58594,No
+M,125,9,Fresquez,1990,90,4,,35,,1.831334589,4,31,,2.39759805,3,4,10.4,36.7,0.14391,,4.37463,N ,low,N,N,N,Shrubland,"Rio Puerco, New-Mexico, USA",35.648301,-106.58594,No
+M,125,10,Fresquez,1990,22.5,4,,28,,1.465067671,4,25,,1.933546814,4,5,10.4,36.7,0.0359775,,1.0936575,N ,low,N,N,N,Shrubland,"Rio Puerco, New-Mexico, USA",35.648301,-106.58594,No
+M,125,11,Fresquez,1990,45,4,,28,,1.465067671,4,25,,1.933546814,4,5,10.4,36.7,0.071955,,2.187315,N ,low,N,N,N,Shrubland,"Rio Puerco, New-Mexico, USA",35.648301,-106.58594,No
+M,125,12,Fresquez,1990,90,4,,32,,1.674363053,4,25,,1.933546814,4,5,10.4,36.7,0.14391,,4.37463,N ,low,N,N,N,Shrubland,"Rio Puerco, New-Mexico, USA",35.648301,-106.58594,No
+A,173,1,Gagnon,unpublished,200,8,SE,86.35,10.09,10.09,8,2.33,4.23,4.23,17,18,3.4,39.2,,15.1,2.05,N ,high,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.51194,-120.97472,No
+A,173,2,Gagnon,unpublished,150,8,SE,89.38,13.14,13.14,8,2.33,4.23,4.23,17,18,3.4,39.2,,15.1,2.05,N ,high,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.51194,-120.97472,No
+A,173,3,Gagnon,unpublished,50,8,SE,73.53,15.74,15.74,8,2.33,4.23,4.23,17,18,3.4,39.2,,15.1,2.05,N ,high,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.51194,-120.97472,No
+A,173,4,Gagnon,unpublished,250,8,SE,128.99,17.07,17.07,8,56.94,26.69,26.69,17,18,3.4,39.2,,15.1,2.05,N ,high,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.51194,-120.97472,No
+A,173,5,Gagnon,unpublished,100,8,SE,71.46,17.2,17.2,8,2.33,4.23,4.23,17,18,3.4,39.2,,15.1,2.05,N ,high,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.51194,-120.97472,No
+A,173,6,Gagnon,unpublished,200,8,SE,127.61,18.14,18.14,8,56.94,26.69,26.69,17,18,3.4,39.2,,15.1,2.05,N ,high,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.51194,-120.97472,No
+A,173,7,Gagnon,unpublished,100,8,SE,140.25,18.15,18.15,8,56.94,26.69,26.69,17,18,3.4,39.2,,15.1,2.05,N ,high,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.51194,-120.97472,No
+A,173,8,Gagnon,unpublished,50,8,SE,122.65,18.69,18.69,8,56.94,26.69,26.69,17,18,3.4,39.2,,15.1,2.05,N ,high,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.51194,-120.97472,No
+A,173,9,Gagnon,unpublished,150,8,SE,132.09,20.77,20.77,8,56.94,26.69,26.69,17,18,3.4,39.2,,15.1,2.05,N ,high,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.51194,-120.97472,No
+A,173,10,Gagnon,unpublished,250,8,SE,84.71,22.21,22.21,8,2.33,4.23,4.23,17,18,3.4,39.2,,15.1,2.05,N ,high,N,Y,N,Shrubland,"Kamloops, BC, Canada",50.51194,-120.97472,No
+X,165,1,González Polo,2015,40,4,SE,11.9,7.58,7.58,4,7.2,2.96,2.96,6,7,14.7,24.8,0.068,11.56,0.74,Y,high,Y,N,N,Shrubland,"Patagonia, Argentina",-40.57333,-70.8325,Yes
+B,61,1,Ippolito,2010,2.5,4,,98.72,,5.165410019,4,98.53,,7.620494705,13,14,7.8,37.4,0.03725,,,N ,low,N,N,N,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,2,Ippolito,2010,5,4,,98.72,,5.165410019,4,98.53,,7.620494705,13,14,7.8,37.4,0.0745,,,N ,low,N,N,N,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,3,Ippolito,2010,10,4,,98.13,,5.13453895,4,98.53,,7.620494705,13,14,7.8,37.4,0.149,,,N ,low,N,N,N,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,4,Ippolito,2010,21,4,,99.71,,5.217210625,4,98.53,,7.620494705,13,14,7.8,37.4,0.3129,,,N ,low,N,N,N,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,5,Ippolito,2010,30,4,,99.71,,5.217210625,4,98.53,,7.620494705,13,14,7.8,37.4,0.447,,,N ,low,N,N,N,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,6,Ippolito,2010,2.5,4,,99.68,,5.21564091,4,99.68,,7.709437859,14,15,7.8,37.4,0.03725,,,N ,low,N,N,N,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,7,Ippolito,2010,5,4,,99.68,,5.21564091,4,99.68,,7.709437859,14,15,7.8,37.4,0.0745,,,N ,low,N,N,N,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,8,Ippolito,2010,10,4,,99.26,,5.193664895,4,99.68,,7.709437859,14,15,7.8,37.4,0.149,,,N ,low,N,N,N,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,9,Ippolito,2010,21,4,,99.68,,5.21564091,4,99.68,,7.709437859,14,15,7.8,37.4,0.3129,,,N ,low,N,N,N,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,10,Ippolito,2010,30,4,,99.68,,5.21564091,4,99.68,,7.709437859,14,15,7.8,37.4,0.447,,,N ,low,N,N,N,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,11,Ippolito,2010,5,4,,99.12,,5.186339557,4,99.31,,7.680821366,13,14,7.8,37.4,0.0745,,,N ,low,N,N,Y,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,12,Ippolito,2010,10,4,,99.9,,5.227152156,4,99.31,,7.680821366,13,14,7.8,37.4,0.149,,,N ,low,N,N,Y,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,13,Ippolito,2010,20,4,,98.92,,5.175874788,4,99.31,,7.680821366,13,14,7.8,37.4,0.298,,,N ,low,N,N,Y,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,14,Ippolito,2010,42,4,,98.72,,5.165410019,4,99.31,,7.680821366,13,14,7.8,37.4,0.6258,,,N ,low,N,N,Y,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,15,Ippolito,2010,60,4,,100.1,,5.237616925,4,99.31,,7.680821366,13,14,7.8,37.4,0.894,,,N ,low,N,N,Y,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,16,Ippolito,2010,10,4,,99.68,,5.21564091,4,99.79,,7.717945465,14,15,7.8,37.4,0.149,,,N ,low,N,N,Y,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,17,Ippolito,2010,20,4,,99.68,,5.21564091,4,99.79,,7.717945465,14,15,7.8,37.4,0.298,,,N ,low,N,N,Y,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,18,Ippolito,2010,40,4,,99.68,,5.21564091,4,99.79,,7.717945465,14,15,7.8,37.4,0.596,,,N ,low,N,N,Y,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,19,Ippolito,2010,84,4,,99.68,,5.21564091,4,99.79,,7.717945465,14,15,7.8,37.4,1.2516,,,N ,low,N,N,Y,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+B,61,20,Ippolito,2010,120,4,,99.26,,5.193664895,4,99.79,,7.717945465,14,15,7.8,37.4,1.788,,,N ,low,N,N,Y,Temperate grassland,"Fort Collins, CO, USA",40.89611,-104.87444,No
+X,5,1,Kowaljow,2010,40,4,SD,19.15,3.33,3.33,4,11.42,4.27,4.27,2,3,9.4,56.5,0.0508,8.44,0.62,N ,medium,Y,N,N,Shrubland,"Bariloche, Argentina",-40.57333,-70.8325,Yes
+X,5,2,Kowaljow,2010,40,4,SD,26.21,9.58,9.58,4,11.42,4.27,4.27,2,3,9.4,56.5,0.068,11.56,0.74,N ,medium,Y,N,N,Shrubland,"Bariloche, Argentina",-40.57333,-70.8325,Yes
+X,5,3,Kowaljow,2010,40,4,SD,10,,0.523238454,4,7.4,,0.572329857,1,2,9.4,56.5,0.0508,8.44,0.62,N ,medium,Y,N,N,Shrubland,"Bariloche, Argentina",-40.57333,-70.8325,Yes
+X,5,4,Kowaljow,2010,40,4,SD,15,,0.784857681,4,7.4,,0.572329857,1,2,9.4,56.5,0.068,11.56,0.74,N ,medium,Y,N,N,Shrubland,"Bariloche, Argentina",-40.57333,-70.8325,Yes
+LLL,159,1,Larchevêque,2005,100,4,SE,92.2,2.55,2.55,4,84.87,2.55,2.55,1.417,2,13.7,60.3,0.037,,2.03,Y,low,Y,N,N,Shrubland,"Provence, France",43.48611,5.30167,No
+LLL,159,2,Larchevêque,2005,100,4,SE,89.33,3.18,3.18,4,82.32,4.14,4.14,2.167,3,13.7,60.3,0.037,,2.03,Y,low,Y,N,N,Shrubland,"Provence, France",43.48611,5.30167,No
+LLL,159,3,Larchevêque,2005,100,4,SE,84.55,6.37,6.37,4,82.32,1.91,1.91,0.833,2,13.7,60.3,0.0185,,1.015,Y,low,Y,N,N,Shrubland,"Provence, France",43.48611,5.30167,No
+LLL,159,4,Larchevêque,2005,50,4,SE,92.52,9.24,9.24,4,82.32,1.91,1.91,0.8333,2,13.7,60.3,0.037,,2.03,Y,low,Y,N,N,Shrubland,"Provence, France",43.48611,5.30167,No
+LLL,159,5,Larchevêque,2005,50,4,SE,93.63,6.37,6.37,4,84.87,2.55,2.55,1.417,2,13.7,60.3,0.0185,,1.015,Y,low,Y,N,N,Shrubland,"Provence, France",43.48611,5.30167,No
+LLL,159,6,Larchevêque,2005,50,4,SE,92.83,10.51,10.51,4,82.32,4.14,4.14,2.167,3,13.7,60.3,0.0185,,1.015,Y,low,Y,N,N,Shrubland,"Provence, France",43.48611,5.30167,No
+W,6,1,Madejón,2006,60,3,SD,81.82,7.76,7.76,3,32.25,11.67,11.67,0.75,2,18,55.2,0.744,11.7,0.786,N ,high,N,N,Y,Shrubland,"El vicario, spain",37.43916,-6.21638,No
+E,17,1,Martinez,2003,40,4,,75,,3.924288405,4,41,,3.171016776,1,2,13.8,44.4,0.045975,10.12,1.06,N ,low,N,N,N,Temperate grassland,"Madrid, Spain",40.41889,-3.69194,No
+E,17,2,Martinez,2003,80,4,,70,,3.662669178,4,41,,3.171016776,1,2,13.8,44.4,0.04291,20.24,2.12,N ,low,N,N,N,Temperate grassland,"Madrid, Spain",40.41889,-3.69194,No
+E,17,3,Martinez,2003,120,4,,46,,2.406896889,4,41,,3.171016776,1,2,13.8,44.4,0.028198,30.36,3.18,N ,low,N,N,N,Temperate grassland,"Madrid, Spain",40.41889,-3.69194,No
+E,17,4,Martinez,2003,40,4,,95,,4.970765314,4,47,,3.635068011,2,3,13.8,44.4,0.058235,10.12,1.06,N ,low,N,N,N,Temperate grassland,"Madrid, Spain",40.41889,-3.69194,No
+E,17,5,Martinez,2003,80,4,,98,,5.12773685,4,47,,3.635068011,2,3,13.8,44.4,0.060074,20.24,2.12,N ,low,N,N,N,Temperate grassland,"Madrid, Spain",40.41889,-3.69194,No
+E,17,6,Martinez,2003,120,4,,96,,5.023089159,4,47,,3.635068011,2,3,13.8,44.4,0.058848,30.36,3.18,N ,low,N,N,N,Temperate grassland,"Madrid, Spain",40.41889,-3.69194,No
+E,17,7,Martinez,2003,40,4,,96,,5.023089159,4,59,,4.563170482,3,4,13.8,44.4,0.058848,10.12,1.06,N ,low,N,N,N,Temperate grassland,"Madrid, Spain",40.41889,-3.69194,No
+E,17,8,Martinez,2003,80,4,,99,,5.180060695,4,59,,4.563170482,3,4,13.8,44.4,0.060687,20.24,2.12,N ,low,N,N,N,Temperate grassland,"Madrid, Spain",40.41889,-3.69194,No
+E,17,9,Martinez,2003,80,4,,98,,5.12773685,4,59,,4.563170482,3,4,13.8,44.4,0.060074,20.24,2.12,N ,low,N,N,N,Temperate grassland,"Madrid, Spain",40.41889,-3.69194,No
+V,7,16,Meyer,2004,5,4,SE,32.03,6.47,6.47,4,20.01,4.36,4.36,0.17,1,5.3,45.2,0.16,,,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,17,Meyer,2004,10,4,SE,44.31,5.42,5.42,4,20.01,4.36,4.36,0.17,1,5.3,45.2,0.32,,,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,18,Meyer,2004,20,4,SE,43.06,18.23,18.23,4,20.01,4.36,4.36,0.17,1,5.3,45.2,0.64,,,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,19,Meyer,2004,40,4,SE,49.79,2.51,2.51,4,20.01,4.36,4.36,0.17,1,5.3,45.2,1.28,,,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,20,Meyer,2004,80,4,SE,52.04,14.53,14.53,4,20.01,4.36,4.36,0.17,1,5.3,45.2,2.56,,,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,1,Meyer,2004,10,4,SE,50.92,5.28,5.28,4,41.41,7.13,7.13,2.17,3,5.3,45.2,0.32,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,2,Meyer,2004,20,4,SE,55.21,5.68,5.68,4,42.92,9.77,9.77,3.17,4,5.3,45.2,0.64,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,3,Meyer,2004,40,4,SE,63.46,5.68,5.68,4,42.92,9.77,9.77,3.17,4,5.3,45.2,1.28,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,4,Meyer,2004,10,4,SE,52.83,5.94,5.94,4,26.35,4.49,4.49,1.17,2,5.3,45.2,0.32,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,5,Meyer,2004,40,4,SE,46.95,8.58,8.58,4,41.41,7.13,7.13,2.17,3,5.3,45.2,1.28,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,6,Meyer,2004,5,4,SE,51.18,8.98,8.98,4,41.41,7.13,7.13,2.17,3,5.3,45.2,0.16,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,7,Meyer,2004,5,4,SE,50.98,9.25,9.25,4,42.92,9.77,9.77,3.17,4,5.3,45.2,0.16,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,8,Meyer,2004,40,4,SE,42.2,9.38,9.38,4,26.35,4.49,4.49,1.17,2,5.3,45.2,1.28,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,9,Meyer,2004,80,4,SE,60.09,10.57,10.57,4,26.35,4.49,4.49,1.17,2,5.3,45.2,2.56,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,10,Meyer,2004,80,4,SE,58.51,11.49,11.49,4,42.92,9.77,9.77,3.17,4,5.3,45.2,2.56,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,11,Meyer,2004,80,4,SE,53.42,15.85,15.85,4,41.41,7.13,7.13,2.17,3,5.3,45.2,2.56,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,12,Meyer,2004,5,4,SE,40.42,15.98,15.98,4,26.35,4.49,4.49,1.17,2,5.3,45.2,0.16,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,13,Meyer,2004,20,4,SE,53.89,16.11,16.11,4,26.35,4.49,4.49,1.17,2,5.3,45.2,0.64,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,14,Meyer,2004,20,4,SE,48.93,17.04,17.04,4,41.41,7.13,7.13,2.17,3,5.3,45.2,0.64,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+V,7,15,Meyer,2004,10,4,SE,51.91,17.83,17.83,4,42.92,9.77,9.77,3.17,4,5.3,45.2,0.32,,#REF!,N ,medium,Y,Y,N,Shrubland,"Denver, CO, USA",39.36788,-105.24069,No
+U,8,1,Moreno-Peñaranda,2004,350,12,SD,96.1,4.6,4.6,12,78.2,16.1,16.1,2.58,4,7.5,77,,,,N ,high,N,N,N,Shrubland,"Catalonia, Spain",42.03611,2.81722,Yes
+EEE,75,1,Newman,2014,20,4.5,SE,84.42,,4.417179029,4,71.31,,5.515248934,4.5,6,4.2,41.1,,,1.09,N ,low,N,N,N,Shrubland,"Kamloops, BC, Canada",51.25,-121.11666,No
+FFF,79,1,Page-Dumroese,2018,17,3,SD,17,2,2,3,9,2,2,2,3,2.1,62,,17,9.52,N ,high,N,Y,N,Temperate seasonal forest,"Oregon, USA",44.79366,-118.50112,Yes
+FFF,79,2,Page-Dumroese,2018,17,3,SD,28,2,2,3,9,2,2,2,3,2.1,62,,17,9.52,N ,high,N,Y,N,Temperate seasonal forest,"Oregon, USA",44.79366,-118.50112,Yes
+FFF,79,3,Page-Dumroese,2018,17,3,SD,27,2,2,3,9,2,2,2,3,2.1,62,,17,9.52,N ,high,N,Y,N,Temperate seasonal forest,"Oregon, USA",44.79366,-118.50112,Yes
+FFF,79,4,Page-Dumroese,2018,17,3,SD,21,2,2,3,8,1,1,2,3,2.1,62,,17,9.52,N ,high,N,Y,N,Temperate seasonal forest,"Oregon, USA",44.79366,-118.50112,Yes
+FFF,79,5,Page-Dumroese,2018,17,3,SD,10,2,2,3,8,1,1,2,3,2.1,62,,17,9.52,N ,high,N,Y,N,Temperate seasonal forest,"Oregon, USA",44.79366,-118.50112,Yes
+FFF,79,6,Page-Dumroese,2018,17,3,SD,31,2,2,3,8,1,1,2,3,2.1,62,,17,9.52,N ,high,N,Y,N,Temperate seasonal forest,"Oregon, USA",44.79366,-118.50112,Yes
+FFF,79,7,Page-Dumroese,2018,17,3,SD,18,3,3,3,9,2,2,2,3,2.1,62,,17,9.52,N ,high,N,Y,N,Temperate seasonal forest,"Oregon, USA",44.79366,-118.50112,Yes
+FFF,79,8,Page-Dumroese,2018,17,3,SD,29,3,3,3,8,1,1,2,3,2.1,62,,17,9.52,N ,high,N,Y,N,Temperate seasonal forest,"Oregon, USA",44.79366,-118.50112,Yes
+JJJ,128,1,Tarrason,2014,10,5,SD,98.88,1.83,1.83,5,90.03,3.65,3.65,1.08,2,16.1,61.8,0.179,,0.445,N ,low,Y,Y,N,Shrubland,"Catalonia, Spain",41.434519,2.19088,No
+JJJ,128,2,Tarrason,2014,10,5,SD,96.77,2.67,2.67,5,90.03,3.65,3.65,1.08,2,16.1,61.8,0.156,,0.336,N ,low,Y,Y,N,Shrubland,"Catalonia, Spain",41.434519,2.19088,No
+JJJ,128,3,Tarrason,2014,10,5,SD,97.19,3.51,3.51,5,90.03,3.65,3.65,1.08,2,16.1,61.8,0.191,,0.466,N ,low,Y,Y,N,Shrubland,"Catalonia, Spain",41.434519,2.19088,No
+JJJ,128,4,Tarrason,2014,10,5,SD,89.75,4.07,4.07,5,80.76,7.87,7.87,0.08,1,16.1,61.8,0.156,,0.336,N ,low,Y,Y,N,Shrubland,"Catalonia, Spain",41.434519,2.19088,No
+JJJ,128,5,Tarrason,2014,10,5,SD,85.53,4.21,4.21,5,80.76,7.87,7.87,0.08,1,16.1,61.8,0.191,,0.466,N ,low,Y,Y,N,Shrubland,"Catalonia, Spain",41.434519,2.19088,No
+JJJ,128,6,Tarrason,2014,10,5,SD,94.1,5.76,5.76,5,80.76,7.87,7.87,0.08,1,16.1,61.8,0.179,,0.445,N ,low,Y,Y,N,Shrubland,"Catalonia, Spain",41.434519,2.19088,No
+T,113,1,Wallace,2016,60,4,SE,40,32.8,32.8,4,49.2,35.4,35.4,8,9,4.1,40.7,,21,2.64,N ,Low,N,N,N,Shrubland,"Ashcroft Ranch, BC, Canada",50.68778,-121.34083,No
+T,113,2,Wallace,2016,20,4,SE,63.65,38.6,38.6,4,49.2,35.4,35.4,8,9,4.1,40.7,,7,0.88,N ,Low,N,N,N,Shrubland,"Ashcroft Ranch, BC, Canada",50.68778,-121.34083,No
+E,116,3,Walter,2009,40,4,,75,,3.924288405,4,50,,3.867093629,1,2,14.3,42.8,,10.12,1.06,N ,low,Y,N,N,Shrubland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,4,Walter,2009,80,4,,70,,3.662669178,4,50,,3.867093629,1,2,14.3,42.8,,20.24,2.12,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,5,Walter,2009,120,4,,46,,2.406896889,4,50,,3.867093629,1,2,14.3,42.8,,30.36,3.18,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,6,Walter,2009,40,4,,95,,4.970765314,4,38,,2.938991158,2,3,14.3,42.8,,10.12,1.06,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,7,Walter,2009,80,4,,98,,5.12773685,4,38,,2.938991158,2,3,14.3,42.8,,20.24,2.12,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,8,Walter,2009,120,4,,96,,5.023089159,4,38,,2.938991158,2,3,14.3,42.8,,30.36,3.18,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,9,Walter,2009,40,4,,96,,5.023089159,4,50,,3.867093629,3,4,14.3,42.8,,10.12,1.06,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,10,Walter,2009,80,4,,99,,5.180060695,4,50,,3.867093629,3,4,14.3,42.8,,20.24,2.12,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,11,Walter,2009,120,4,,98,,5.12773685,4,50,,3.867093629,3,4,14.3,42.8,,30.36,3.18,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,12,Walter,2009,40,4,,96,,5.023089159,4,50,,3.867093629,4,5,14.3,42.8,,10.12,1.06,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,13,Walter,2009,80,4,,98,,5.12773685,4,50,,3.867093629,4,5,14.3,42.8,,20.24,2.12,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,14,Walter,2009,120,4,,98,,5.12773685,4,50,,3.867093629,4,5,14.3,42.8,,30.36,3.18,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,15,Walter,2009,40,4,,96,,5.023089159,4,38,,2.938991158,5,6,14.3,42.8,,10.12,1.06,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,16,Walter,2009,80,4,,93,,4.866117623,4,38,,2.938991158,5,6,14.3,42.8,,20.24,2.12,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+E,116,17,Walter,2009,120,4,,97,,5.075413004,4,38,,2.938991158,5,6,14.3,42.8,,30.36,3.18,N ,low,Y,N,N,Temperate grassland,"Madrid, Spain",40.20889,-3.56861,No
+HHH,120,1,Xiong,2015,30,3,SD,98,2,2,3,58,20,20,8,9,18,55.2,,5.85,0.393,Y,High,N,N,Y,Shrubland,"El Vicario, Spain",37.43917,-6.21639,Yes
+HHH,120,2,Xiong,2015,30,3,SD,92,6,6,3,58,20,20,8,9,18,55.2,,5.85,0.393,Y,High,N,N,Y,Shrubland,"El Vicario, Spain",37.43917,-6.21639,Yes
