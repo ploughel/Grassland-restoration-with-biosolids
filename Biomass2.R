@@ -13,7 +13,7 @@ library(metaviz)
 
 
 library(readxl)
-Biomass <- read_excel("~/Documents/GitHub/Grassland restoration with biosolids/data_sheets.xlsx", 
+Biomass <- read_excel("~/Documents/GitHub/Grassland restoration with biosolids/Grassland-restoration-with-biosolids/data_sheets.xlsx", 
                     sheet = "Biomass")
 
 
@@ -21,6 +21,9 @@ ROM.Biomass <- escalc(n2i = Nc, n1i = Ne, m2i = Mc, m1i = Me,
                     sd2i = scimp, sd1i = seimp, data = Biomass, measure = "ROM", 
                     append = TRUE )
 
+
+ROM.Biomass<-ROM.Biomass %>% 
+  filter(yi!="NA")
 
 HG.Biomass <- escalc(n2i = Nc, n1i = Ne, m2i = Mc, m1i = Me, 
                    sd2i = scimp, sd1i = seimp, data = Biomass, measure = "SMD", 
@@ -50,7 +53,7 @@ lines(xfit.r, yfit.r, col = "black", lwd = 2)
 
 #random effects model
 
-rand.var=list(~ 1|Paper.ID./Case)
+rand.var=list(~ 1|Paper.ID/Case)
 
 rma.random <- rma.mv(yi = yi, V = vi, random = rand.var, data = ROM.Biomass, method = "ML")
 summary(rma.random)
@@ -62,32 +65,80 @@ library(xlsx)
 library(rJava)
 library("glmulti")
 
-
-ROM.Biomass<-ROM.Biomass %>% 
-  filter(yi!="NA")
+rma.glmulti<- function(formula, data, ...)
+  rma(formula, vi, data=data, method ="ML",...)
 
 ROM.ai.size <- glmulti(yi ~Biosolid.level..Mg.ha.1.+time+Temp+Precip+Mixture..yes.no.+Burn..Y.N.+
                         Seeded..Y.N.+Multiple.application..Y.N.+Severe.Disturbance+ai, data=ROM.Biomass, method="d",
-                      level=1, crit="aicc")
+                      level=1, crit="aicc", fitfunction = rma.glmulti)
 
 ROM.ai.mod <- glmulti(yi ~ Biosolid.level..Mg.ha.1.+time+Temp+Precip+Mixture..yes.no.+Burn..Y.N.+
                        Seeded..Y.N.+Multiple.application..Y.N.+Severe.Disturbance+ai, data=ROM.Biomass, method="h",
-                     level=1, crit="aicc", confsetsize=ROM.ai.size)
+                     level=1, crit="aicc", confsetsize=ROM.ai.size, fitfunction = rma.glmulti)
 
 plot(ROM.ai.mod, type="s")
 
 
 
 
-ROM.ai.rma<-rma.mv(yi, vi, mods = ~time+Temp+Precip+Mixture..yes.no.+Burn..Y.N.+Seeded..Y.N.+Severe.Disturbance+ai, 
+ROM.ai.rma<-rma.mv(yi, vi, mods = ~time+Temp+Precip+Mixture..yes.no.+Burn..Y.N.+
+                     Seeded..Y.N.+Severe.Disturbance+ai, 
                        random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
-vif(ROM.ai.rma, table=TRUE) 
-summary(ROM.ai.rma)
+
+#models with interactions
+
+ROM.prod.int1<-rma.mv(yi, vi, mods = ~time*Mixture..yes.no.,
+                     random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int2<-rma.mv(yi, vi, mods = ~time*Burn..Y.N.,
+                      random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int3<-rma.mv(yi, vi, mods = ~time*Seeded..Y.N.,
+                      random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int4<-rma.mv(yi, vi, mods = ~time*Severe.Disturbance,
+                      random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int5<-rma.mv(yi, vi, mods = ~Temp*Mixture..yes.no.,
+                      random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int6<-rma.mv(yi, vi, mods = ~Temp*Burn..Y.N.,
+                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int7<-rma.mv(yi, vi, mods = ~Temp*Seeded..Y.N.,
+                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int8<-rma.mv(yi, vi, mods = ~Temp*Severe.Disturbance,
+                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int9<-rma.mv(yi, vi, mods = ~Precip*Mixture..yes.no.,
+                      random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int10<-rma.mv(yi, vi, mods = ~Precip*Burn..Y.N.,
+                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int11<-rma.mv(yi, vi, mods = ~Precip*Seeded..Y.N.,
+                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int12<-rma.mv(yi, vi, mods = ~Precip*Severe.Disturbance,
+                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int13<-rma.mv(yi, vi, mods = ~ai*Mixture..yes.no.,
+                      random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int14<-rma.mv(yi, vi, mods = ~ai*Burn..Y.N.,
+                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int15<-rma.mv(yi, vi, mods = ~ai*Seeded..Y.N.,
+                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
+
+ROM.prod.int16<-rma.mv(yi, vi, mods = ~ai*Severe.Disturbance,
+                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
 
 
-
-mods = list(ROM.ai.rma)
-
+mods = list(ROM.ai.rma, ROM.prod.int1,ROM.prod.int2,ROM.prod.int3,ROM.prod.int5,ROM.prod.int6,ROM.prod.int7,
+            ROM.prod.int8, ROM.prod.int9, ROM.prod.int10, ROM.prod.int11, ROM.prod.int12, ROM.prod.int13, ROM.prod.int14,
+            ROM.prod.int15, ROM.prod.int16)
 
 
 # model fit diagnostics: pseudo R2, marginal/conditional R2, AICc, and I2
@@ -128,8 +179,10 @@ for (i in 1:length(mods)) {
   aicc[i] <- fitstats(mods[[i]])[5]
 }
 # 
-mods.int.df<-cbind(pseudo.r2,marg.r2,cond.r2,aicc,I2)
-
+cbind(pseudo.r2,marg.r2,cond.r2,aicc,I2)
+vif(ROM.prod.int1, table = TRUE)
+vif(ROM.prod.int2, table = TRUE)
+vif(ROM.prod.int3, table=TRUE)
 
 #=========================================graphs=========
 
@@ -139,7 +192,7 @@ write.csv(as.data.frame(coef(summary(ROM.ai.rma))), file="prod.mod.csv")
 df.prod<-read.csv("prod.mod.csv")
 df.prod
 
-df.ai<-df.prod[2:9,]
+df.ai<-df.prod[2:10,]
 
 LRR.ai.prod = ggplot(data=df.ai,
                         aes(x = X, y = estimate, ymin =ci.lb , ymax = ci.ub ))+
@@ -179,7 +232,7 @@ names(preds)
 
 
 
-# write.csv(preds, file = "lrr.prod.csv")
+ # write.csv(preds, file = "lrr.prod.csv")
 lrr.prod<-read.csv("lrr.prod.csv", header = TRUE)
 head(lrr.prod)
 
@@ -193,7 +246,6 @@ dev.off()
  
 
 #ai
-head(preds)
 bubble.ai=ggplot(preds, aes(x=X.ai,y=pred))+
   stat_smooth(data=preds,method="glm",formula=y~x,fullrange=T,se=TRUE,size=1, color="black"     )+ #, linetype=Biome 
   geom_hline(yintercept=0, linetype="dashed", size=.5)+
@@ -206,15 +258,16 @@ bubble.ai=ggplot(preds, aes(x=X.ai,y=pred))+
   ylab("Log Response Ratio")+
   xlab("Aridity Index")+
   theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=20),
-        axis.title=element_text(size=20), legend.position = "bottom")+
+        axis.title=element_text(size=20), legend.position = "none")+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))
+        panel.background = element_blank(), axis.line = element_line(colour = "black"))+
+  ylim(-2,6)
 
 bubble.ai
 
-# tiff("prod.ai.tiff", width = 16, height= 12, units ='cm', res=600)
-# bubble.ai
-# dev.off()
+tiff("prod.ai.tiff", width = 16, height= 12, units ='cm', res=600)
+bubble.ai
+dev.off()
 
 
 bubble.p=ggplot(preds, aes(x=X.Precip,y=pred))+
@@ -229,9 +282,11 @@ bubble.p=ggplot(preds, aes(x=X.Precip,y=pred))+
   ylab("Log Response Ratio")+
   xlab("Precipitation (cm)")+
   theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=20),
-        axis.title=element_text(size=20), legend.position = "bottom")+
+        axis.title=element_text(size=20), legend.position = "none")+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))
+        panel.background = element_blank(), axis.line = element_line(colour = "black"))+
+  ylim(-2,6)
+
 
 bubble.p
 
@@ -251,12 +306,107 @@ bubble.t=ggplot(preds, aes(x=X.time,y=pred))+
   ylab("Log Response Ratio")+
   xlab("Years Since Restoration")+
   theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=20),
-        axis.title=element_text(size=20), legend.position = "bottom")+
+        axis.title=element_text(size=20), legend.position = "none")+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))
+        panel.background = element_blank(), axis.line = element_line(colour = "black"))+
+  ylim(-2,6)
+
 
 bubble.t
 
 # tiff("prod.t.tiff", width = 16, height= 12, units ='cm', res=600)
 # bubble.t
 # dev.off()
+
+
+library(cowplot)
+library(ggpubr)
+biomass.plot<-plot_grid(bubble.ai, bubble.t,
+                      labels = c("a", "b"),
+                      ncol = 2, nrow = 1)
+
+
+
+ tiff("biomass.tiff", width = 16, height= 12, units ='cm', res=600)
+biomass.plot
+ dev.off()
+ 
+ 
+ #plots with interactions
+ summary(ROM.prod.int2) # interaction between burn and time
+
+ 
+ #subset by burn
+ prod.int2a.burn<-rma.mv(yi, vi, mods = ~ time, random = rand.var,data = ROM.Biomass,slab = paste(author, year), subset = Burn..Y.N.=="Y", method = "ML")
+ preds.b<-predict(prod.int2a.burn, addx = TRUE)
+ preds.b<-as.data.frame(preds.b)
+ dim(preds.b)
+ 
+ preds.b$Burn<-rep("Y", times = 25)
+ 
+ prod.int2a.burn.n<-rma.mv(yi, vi, mods = ~ time, random = rand.var,data = ROM.Biomass,slab = paste(author, year), subset = Burn..Y.N.=="N", method = "ML")
+ preds.b.n<-predict(prod.int2a.burn.n, addx = TRUE)
+ preds.b.n<-as.data.frame(preds.b.n)
+ dim(preds.b.n)
+ 
+ preds.b.n$Burn<-rep("N", times = 234)
+ 
+ preds.burn=rbind(preds.b,preds.b.n)
+ names(preds.burn)
+
+ bubble.time.Burn=ggplot(preds.burn, aes(x=X.time,y=pred))+
+   stat_smooth(data=preds.burn,aes(color= Burn, fill=Burn),method="auto",formula=y~x,fullrange=T,se=TRUE,size=1     )+ #, linetype=Burn 
+   geom_hline(yintercept=0, linetype="dashed", size=.5)+
+
+   geom_point(data=ROM.Biomass, aes(x=time, y = yi, size=1/vi, color=Burn..Y.N., group=Burn..Y.N., fill=Burn..Y.N., shape=Burn..Y.N.))+
+   ylab("Log Response Ratio")+
+   xlab("Years since restoration")+
+   # scale_color_manual(values=Burn.colors)+
+   # scale_fill_manual(values=Burn.colors)+
+   # 
+   theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=15),
+         axis.title=element_text(size=15), legend.position = "bottom")+
+   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+         panel.background = element_blank(), axis.line = element_line(colour = "black"))
+ bubble.time.Burn
+ 
+ # tiff("prod.time.burn.tiff", width = 16, height= 12, units ='cm', res=600)
+ # bubble.time.Burn
+ # dev.off()
+ 
+ 
+ #subset by seeded
+
+ prod.int3a.Seeded<-rma.mv(yi, vi, mods = ~ time, random = rand.var,data = ROM.Biomass,slab = paste(author, year), subset = Seeded..Y.N.=="Y", method = "ML")
+ preds.s<-predict(prod.int3a.Seeded, addx = TRUE)
+ preds.s<-as.data.frame(preds.s)
+ dim(preds.s)
+ 
+ preds.s$Seeded<-rep("Y", times = 114)
+ 
+ prod.int3a.Seeded.n<-rma.mv(yi, vi, mods = ~ time, random = rand.var,data = ROM.Biomass,slab = paste(author, year), subset = Seeded..Y.N.=="N", method = "ML")
+ preds.s.n<-predict(prod.int3a.Seeded.n, addx = TRUE)
+ preds.s.n<-as.data.frame(preds.s.n)
+ dim(preds.s.n)
+ 
+ preds.s.n$Seeded<-rep("N", times = 145)
+ 
+ preds.Seeded=rbind(preds.s,preds.s.n)
+ names(preds.Seeded)
+ 
+ bubble.time.Seeded=ggplot(preds.Seeded, aes(x=X.time,y=pred))+
+   stat_smooth(data=preds.Seeded,aes(color= Seeded, fill=Seeded),method="glm",formula=y~x,fullrange=T,se=TRUE,size=1     )+ #, linetype=Seeded 
+   geom_hline(yintercept=0, linetype="dashed", size=.5)+
+   
+   geom_point(data=ROM.Biomass, aes(x=time, y = yi, size=1/vi, color=Seeded..Y.N., group=Seeded..Y.N., fill=Seeded..Y.N., shape=Seeded..Y.N.))+
+   ylab("Log Response Ratio")+
+   xlab("Years since restoration")+
+   # scale_color_manual(values=Seeded.colors)+
+   # scale_fill_manual(values=Seeded.colors)+
+   # 
+   theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=15),
+         axis.title=element_text(size=15), legend.position = "bottom")+
+   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+         panel.background = element_blank(), axis.line = element_line(colour = "black"))
+ bubble.time.Seeded
+ 
