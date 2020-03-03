@@ -63,25 +63,24 @@ summary(rma.random)
 
 
 #-----------------------# model selection 
-rma.glmulti<- function(formula, data, ...)
-  rma(formula, vi, data=data, method ="ML",...)
-
-ROM.cover.size <- glmulti(yi ~Biosolid.level..Mg.ha.1.+yeartrans+Temp+Precip+Mixture+Burn+
-                         Seeded+Multiple.application+S.dist+ai, data=ROM.Cover, method="d",
-                      level=1, crit="aicc", fitfunction = rma.glmulti)
-
-
-ROM.cover.rma <- glmulti(yi ~ Biosolid.level..Mg.ha.1.+yeartrans+Temp+Precip+Mixture+Burn+
-                        Seeded+Multiple.application+S.dist+ai, data=ROM.Cover, method="h",
-                     level=1, crit="aicc", confsetsize=ROM.ai.size, fitfunction = rma.glmulti)
-
-
-plot(ROM.cover.rma, type="s")
+# rma.glmulti<- function(formula, data, ...)
+#   rma(formula, vi, data=data, method ="ML",...)
+# 
+# ROM.cover.size <- glmulti(yi ~Biosolid.level..Mg.ha.1.+yeartrans+Temp+Precip+Mixture+Burn+
+#                          Seeded+Multiple.application+S.dist+ai, data=ROM.Cover, method="d",
+#                       level=1, crit="aicc", fitfunction = rma.glmulti)
+# 
+# 
+# ROM.cover.bf <- glmulti(yi ~ Biosolid.level..Mg.ha.1.+yeartrans+Temp+Precip+Mixture+Burn+
+#                         Seeded+Multiple.application+S.dist+ai, data=ROM.Cover, method="h",
+#                      level=1, crit="aicc", confsetsize=ROM.cover.size, fitfunction = rma.glmulti)
+# 
+# 
+# plot(ROM.cover.bf, type="s")
 
 #best fit model
 ROM.cover.bf<-rma.mv(yi, vi, mods = ~Temp+Seeded+Burn+Biosolid.level..Mg.ha.1.+Multiple.application, 
                        random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
-head(ROM.c)
 #model with interactions
 ROM.cover.int.1<-rma.mv(yi, vi, mods = ~Temp*Seeded, 
                       random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
@@ -156,7 +155,7 @@ ROM.cover.int.1
 
 
 
-write.csv(as.data.frame(coef(summary(ROM.cover.rma))), file="cover.mod.csv")
+# write.csv(as.data.frame(coef(summary(ROM.cover.bf))), file="cover.mod.csv")
 df.cover<-read.csv("cover.mod.csv")
 df.cover
 
@@ -191,7 +190,7 @@ LRR.ai.cover
 
 
 
-preds<-predict(ROM.cover.rma, addx = TRUE)
+preds<-predict(ROM.cover.bf, addx = TRUE)
 
 names(preds)
 
@@ -200,45 +199,22 @@ names(preds)
 
 
 
-write.csv(preds, file = "lrr.cover.csv")
+# write.csv(preds, file = "lrr.cover.csv")
 lrr.cover<-read.csv("lrr.cover.csv", header = TRUE)
-head(lrr.cover)
+# head(lrr.cover)
 
 #forest plot
 
 forest.cover<-viz_forest(x =preds[c("pred", "se")], variant="classic",summary_label ="Summary Effect", xlab = "Log Response Ratio")
 
 
-tiff("cover.forest.tiff", width = 16, height= 25, units ='cm', res=600)
-forest.cover
-dev.off()
+# tiff("cover.forest.tiff", width = 16, height= 25, units ='cm', res=600)
+# forest.cover
+# dev.off()
 
  
-summary(ROM.cover.rma)
-#rate
+summary(ROM.cover.bf)
 
-bubble.rate=ggplot(preds, aes(x=X.Biosolid.level..Mg.ha.1.,y=pred))+
-  stat_smooth(data=preds,method="glm",formula=y~x,fullrange=T,se=TRUE,size=1, color="black"     )+ #, linetype=Biome 
-  geom_hline(yintercept=0, linetype="dashed", size=.5)+
-  # stat_smooth(data=preds.biome,aes(x=level.exp,y=ci.lb, color=Biome),method="glm",formula=y~x,fullrange=T,
-  #             se=FALSE,size=1,linetype=3)+
-  # stat_smooth(data=preds.biome,aes(x=level.exp,y=ci.ub),method="glm",formula=y~x,fullrange=T,
-  #             se=FALSE,size=1,linetype=3)+
-  # scale_linetype_manual(values=biome.line)+
-  geom_point(data=ROM.Cover, aes(x=Biosolid.level..Mg.ha.1., y = yi, size=1/vi))+
-  ylab("Log Response Ratio")+
-  xlab(expression(Biosolids~application~rate~(Mg~ha^{-1})))+
-  theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=15),
-        axis.title=element_text(size=15), legend.position = "none")+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))+
-ylim(-2,4.1)
-
-bubble.rate
-
-# tiff("cover.rate.tiff", width = 16, height= 12, units ='cm', res=600)
-# bubble.rate
-# dev.off()
 
 
 bubble.t=ggplot(preds, aes(x=X.Temp,y=pred))+
@@ -265,24 +241,22 @@ bubble.t
 #  dev.off()
 
 #seeded
-mod1.seed<-rma.mv(yi, vi, mods = ~ Temp+Burn+Biosolid.level..Mg.ha.1.+Multiple.application, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Seeded=="Y", method = "ML")
-mod1.seed.n<-rma.mv(yi, vi, mods = ~ Temp+Burn+Biosolid.level..Mg.ha.1.+Multiple.application, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Seeded=="N", method = "ML")
+ROM.cover.bf
+mod1.seed.n<-rma.mv(yi, vi, mods = ~ Temp+Burn+Biosolid.level..Mg.ha.1., random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Seeded=="N", method = "ML")
+mod1.seed<-rma.mv(yi, vi, mods = ~ Temp+Burn+Biosolid.level..Mg.ha.1., random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Seeded=="Y", method = "ML")
 
-dim(preds.s)
 
 preds.seed<-predict(mod1.seed, addx = TRUE)
 preds.s<-as.data.frame(preds.seed)
 
 preds.s$Seeded<-rep("Y", times = 87)
 
-dim(preds.ns)
 preds.ns<-predict(mod1.seed.n, addx = TRUE)
-#preds<-do.call(cbind.data.frame, preds)
 preds.ns<-as.data.frame(preds.ns)
-preds.ns$Seeded<-rep("N", times = 128)
+preds.ns$Seeded<-rep("N", times = 124)
 
 
-preds.seeded=rbind(preds.s,preds.ns[,-11])
+preds.seeded=rbind(preds.s,preds.ns)
 
 names(preds.seeded)
 
@@ -306,29 +280,26 @@ geom_hline(yintercept=0, linetype="dashed", size=.5)+
 
 bubble.seed
 
-#   tiff("cover.seed.tiff", width = 16, height= 12, units ='cm', res=600)
-# bubble.seed
-#  dev.off()
+
 
 
 #burned
-mod1.burn<-rma.mv(yi, vi, mods = ~ Temp+Seeded+Biosolid.level..Mg.ha.1.+Multiple.application, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Burn=="Y", method = "ML")
 mod1.burn.n<-rma.mv(yi, vi, mods = ~ Temp+Seeded+Biosolid.level..Mg.ha.1.+Multiple.application, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Burn=="N", method = "ML")
+mod1.burn<-rma.mv(yi, vi, mods = ~ Temp+Seeded+Biosolid.level..Mg.ha.1.+Multiple.application, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Burn=="Y", method = "ML")
 
 
 preds.burn<-predict(mod1.burn, addx = TRUE)
 preds.b<-as.data.frame(preds.burn)
-
-preds.b$burned<-rep("Y", times = 54)
+dim(preds.b)
+preds.b$burned<-rep("Y", times = 50)
 
 preds.nb<-predict(mod1.burn.n, addx = TRUE)
-#preds<-do.call(cbind.data.frame, preds)
 
 preds.nb<-as.data.frame(preds.nb)
 preds.nb$burned<-rep("N", times = 161)
 
 
-preds.burned=rbind(preds.b,preds.nb[,-11])
+preds.burned=rbind(preds.b,preds.nb)
 
 
 
