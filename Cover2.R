@@ -18,7 +18,7 @@ library(rJava)
 library("glmulti")
 
 
-Cover <- read_excel("~/Documents/GitHub/Grassland restoration with biosolids/data_sheets.xlsx", 
+Cover <- read_excel("~/Documents/GitHub/Grassland restoration with biosolids/Grassland-restoration-with-biosolids/data_sheets.xlsx", 
                     sheet = "Cover")
 
 
@@ -56,35 +56,56 @@ lines(xfit.r, yfit.r, col = "black", lwd = 2)
 
 #random effects model
 
-rand.var=list(~ 1|Paper.ID./Case)
+rand.var=list(~ 1|Paper.ID/Case)
 
 rma.random <- rma.mv(yi = yi, V = vi, random = rand.var, data = ROM.Cover, method = "ML")
 summary(rma.random)
 
 
 #-----------------------# model selection 
+rma.glmulti<- function(formula, data, ...)
+  rma(formula, vi, data=data, method ="ML",...)
 
-ROM.ai.size <- glmulti(yi ~Biosolid.level..Mg.ha.1.+yeartrans+Temp+Precip+Mixture+Burn+
+ROM.cover.size <- glmulti(yi ~Biosolid.level..Mg.ha.1.+yeartrans+Temp+Precip+Mixture+Burn+
                          Seeded+Multiple.application+S.dist+ai, data=ROM.Cover, method="d",
-                      level=1, crit="aicc")
+                      level=1, crit="aicc", fitfunction = rma.glmulti)
 
-ROM.ai.mod <- glmulti(yi ~ Biosolid.level..Mg.ha.1.+yeartrans+Temp+Precip+Mixture+Burn+
+
+ROM.cover.rma <- glmulti(yi ~ Biosolid.level..Mg.ha.1.+yeartrans+Temp+Precip+Mixture+Burn+
                         Seeded+Multiple.application+S.dist+ai, data=ROM.Cover, method="h",
-                     level=1, crit="aicc", confsetsize=ROM.ai.size)
-
-plot(ROM.ai.mod, type="s")
+                     level=1, crit="aicc", confsetsize=ROM.ai.size, fitfunction = rma.glmulti)
 
 
+plot(ROM.cover.rma, type="s")
 
-
-ROM.cover.rma<-rma.mv(yi, vi, mods = ~Temp+Seeded+Burn+Biosolid.level..Mg.ha.1.+Multiple.application, 
+#best fit model
+ROM.cover.bf<-rma.mv(yi, vi, mods = ~Temp+Seeded+Burn+Biosolid.level..Mg.ha.1.+Multiple.application, 
                        random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
-vif(ROM.cover.rma, table=TRUE) 
-summary(ROM.cover.rma)
+head(ROM.c)
+#model with interactions
+ROM.cover.int.1<-rma.mv(yi, vi, mods = ~Temp*Seeded, 
+                      random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
 
 
+ROM.cover.int.2<-rma.mv(yi, vi, mods = ~Temp*Burn, 
+                       random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
 
-mods = list(ROM.cover.rma)
+ROM.cover.int.3<-rma.mv(yi, vi, mods = ~Temp*Multiple.application, 
+                       random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
+
+
+ROM.cover.int.4<-rma.mv(yi, vi, mods = ~Biosolid.level..Mg.ha.1.*Seeded, 
+                       random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
+
+ROM.cover.int.5<-rma.mv(yi, vi, mods = ~Biosolid.level..Mg.ha.1.*Burn, 
+                       random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
+
+ROM.cover.int.6<-rma.mv(yi, vi, mods = ~Biosolid.level..Mg.ha.1.*Multiple.application, 
+                       random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
+
+
+mods = list(ROM.cover.bf,ROM.cover.int.1, ROM.cover.int.2,
+            ROM.cover.int.3, ROM.cover.int.4,ROM.cover.int.5, ROM.cover.int.6)
 
 
 
@@ -126,9 +147,11 @@ for (i in 1:length(mods)) {
   aicc[i] <- fitstats(mods[[i]])[5]
 }
 # 
-mods.int.df<-cbind(pseudo.r2,marg.r2,cond.r2,aicc,I2)
 
+cbind(pseudo.r2,marg.r2,cond.r2,aicc,I2)
 
+vif(ROM.cover.int.1, table=TRUE)
+ROM.cover.int.1
 #=========================================graphs=========
 
 
@@ -292,7 +315,6 @@ bubble.seed
 mod1.burn<-rma.mv(yi, vi, mods = ~ Temp+Seeded+Biosolid.level..Mg.ha.1.+Multiple.application, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Burn=="Y", method = "ML")
 mod1.burn.n<-rma.mv(yi, vi, mods = ~ Temp+Seeded+Biosolid.level..Mg.ha.1.+Multiple.application, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Burn=="N", method = "ML")
 
-dim(preds.nb)
 
 preds.burn<-predict(mod1.burn, addx = TRUE)
 preds.b<-as.data.frame(preds.burn)
@@ -305,11 +327,9 @@ preds.nb<-predict(mod1.burn.n, addx = TRUE)
 preds.nb<-as.data.frame(preds.nb)
 preds.nb$burned<-rep("N", times = 161)
 
-names(preds.nb)
 
 preds.burned=rbind(preds.b,preds.nb[,-11])
 
-names(preds.burned)
 
 
 bubble.burn=ggplot(preds.burned, aes(x=burned,y=pred))+
@@ -348,4 +368,41 @@ cover.plot<-plot_grid(bubble.rate, bubble.t,bubble.seed, bubble.burn,
 #  tiff("cover.tiff", width = 16, height= 12, units ='cm', res=600)
 # cover.plot
 #  dev.off()
+
+
+#plots with interactions
+
+head(ROM.cover)
+prod.int2.Seeded<-rma.mv(yi, vi, mods = ~ Temp, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Seeded=="Y", method = "ML")
+preds.s<-predict(prod.int2.Seeded, addx = TRUE)
+preds.s<-as.data.frame(preds.s)
+dim(preds.s)
+
+preds.s$Seeded<-rep("Y", Temps = 87)
+
+prod.int2.Seeded.n<-rma.mv(yi, vi, mods = ~ Temp, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Seeded=="N", method = "ML")
+preds.s.n<-predict(prod.int2.Seeded.n, addx = TRUE)
+preds.s.n<-as.data.frame(preds.s.n)
+dim(preds.s.n)
+
+preds.s.n$Seeded<-rep("N", Temps = 124)
+
+preds.Seeded=rbind(preds.s,preds.s.n)
+names(preds.Seeded)
+
+bubble.Temp.Seeded=ggplot(preds.Seeded, aes(x=X.Temp,y=pred))+
+  stat_smooth(data=preds.Seeded,aes(color= Seeded, fill=Seeded),method="glm",formula=y~x,fullrange=T,se=TRUE,size=1     )+ #, linetype=Seeded 
+  geom_hline(yintercept=0, linetype="dashed", size=.5)+
+  
+  geom_point(data=ROM.Cover, aes(x=Temp, y = yi, size=1/vi, color=Seeded, group=Seeded, fill=Seeded, shape=Seeded))+
+  ylab("Log Response Ratio")+
+  xlab("Temperature")+
+  # scale_color_manual(values=Seeded.colors)+
+  # scale_fill_manual(values=Seeded.colors)+
+  # 
+  theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=15),
+        axis.title=element_text(size=15), legend.position = "bottom")+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(), axis.line = element_line(colour = "black"))
+bubble.Temp.Seeded
  
