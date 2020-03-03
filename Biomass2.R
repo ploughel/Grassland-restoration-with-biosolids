@@ -61,28 +61,28 @@ ran.df<-as.data.frame(coef(summary(rma.random)))
 
 
 #-----------------------# model selection 
-library(xlsx)
-library(rJava)
-library("glmulti")
-
-rma.glmulti<- function(formula, data, ...)
-  rma(formula, vi, data=data, method ="ML",...)
-
-ROM.ai.size <- glmulti(yi ~Biosolid.level..Mg.ha.1.+time+Temp+Precip+Mixture..yes.no.+Burn..Y.N.+
-                        Seeded..Y.N.+Multiple.application..Y.N.+Severe.Disturbance+ai, data=ROM.Biomass, method="d",
-                      level=1, crit="aicc", fitfunction = rma.glmulti)
-
-ROM.ai.mod <- glmulti(yi ~ Biosolid.level..Mg.ha.1.+time+Temp+Precip+Mixture..yes.no.+Burn..Y.N.+
-                       Seeded..Y.N.+Multiple.application..Y.N.+Severe.Disturbance+ai, data=ROM.Biomass, method="h",
-                     level=1, crit="aicc", confsetsize=ROM.ai.size, fitfunction = rma.glmulti)
-
-plot(ROM.ai.mod, type="s")
+# library(xlsx)
+# library(rJava)
+# library("glmulti")
+# 
+# rma.glmulti<- function(formula, data, ...)
+#   rma(formula, vi, data=data, method ="ML",...)
+# 
+# ROM.ai.size <- glmulti(yi ~Biosolid.level..Mg.ha.1.+time+Temp+Precip+Mixture..yes.no.+Burn..Y.N.+
+#                         Seeded..Y.N.+Multiple.application..Y.N.+Severe.Disturbance+ai, data=ROM.Biomass, method="d",
+#                       level=1, crit="aicc", fitfunction = rma.glmulti)
+# 
+# ROM.ai.mod <- glmulti(yi ~ Biosolid.level..Mg.ha.1.+time+Temp+Precip+Mixture..yes.no.+Burn..Y.N.+
+#                        Seeded..Y.N.+Multiple.application..Y.N.+Severe.Disturbance+ai, data=ROM.Biomass, method="h",
+#                      level=1, crit="aicc", confsetsize=ROM.ai.size, fitfunction = rma.glmulti)
+# 
+# plot(ROM.ai.mod, type="s")
 
 
 
 
 ROM.ai.rma<-rma.mv(yi, vi, mods = ~time+Temp+Precip+Mixture..yes.no.+Burn..Y.N.+
-                     Seeded..Y.N.+Severe.Disturbance+ai, 
+                     Seeded..Y.N.+Severe.Disturbance, 
                        random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
 
 #models with interactions
@@ -111,34 +111,10 @@ ROM.prod.int7<-rma.mv(yi, vi, mods = ~Temp*Seeded..Y.N.,
 ROM.prod.int8<-rma.mv(yi, vi, mods = ~Temp*Severe.Disturbance,
                        random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
 
-ROM.prod.int9<-rma.mv(yi, vi, mods = ~Precip*Mixture..yes.no.,
-                      random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
-
-ROM.prod.int10<-rma.mv(yi, vi, mods = ~Precip*Burn..Y.N.,
-                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
-
-ROM.prod.int11<-rma.mv(yi, vi, mods = ~Precip*Seeded..Y.N.,
-                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
-
-ROM.prod.int12<-rma.mv(yi, vi, mods = ~Precip*Severe.Disturbance,
-                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
-
-ROM.prod.int13<-rma.mv(yi, vi, mods = ~ai*Mixture..yes.no.,
-                      random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
-
-ROM.prod.int14<-rma.mv(yi, vi, mods = ~ai*Burn..Y.N.,
-                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
-
-ROM.prod.int15<-rma.mv(yi, vi, mods = ~ai*Seeded..Y.N.,
-                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
-
-ROM.prod.int16<-rma.mv(yi, vi, mods = ~ai*Severe.Disturbance,
-                       random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
 
 
 mods = list(ROM.ai.rma, ROM.prod.int1,ROM.prod.int2,ROM.prod.int3,ROM.prod.int5,ROM.prod.int6,ROM.prod.int7,
-            ROM.prod.int8, ROM.prod.int9, ROM.prod.int10, ROM.prod.int11, ROM.prod.int12, ROM.prod.int13, ROM.prod.int14,
-            ROM.prod.int15, ROM.prod.int16)
+            ROM.prod.int8)
 
 
 # model fit diagnostics: pseudo R2, marginal/conditional R2, AICc, and I2
@@ -180,6 +156,7 @@ for (i in 1:length(mods)) {
 }
 # 
 cbind(pseudo.r2,marg.r2,cond.r2,aicc,I2)
+
 vif(ROM.prod.int1, table = TRUE)
 vif(ROM.prod.int2, table = TRUE)
 vif(ROM.prod.int3, table=TRUE)
@@ -188,13 +165,13 @@ vif(ROM.prod.int3, table=TRUE)
 
 
 
-write.csv(as.data.frame(coef(summary(ROM.ai.rma))), file="prod.mod.csv")
+# write.csv(as.data.frame(coef(summary(ROM.ai.rma))), file="prod.mod.csv")
 df.prod<-read.csv("prod.mod.csv")
 df.prod
 
-df.ai<-df.prod[2:10,]
+df.ai<-df.prod[2:8,]
 
-LRR.ai.prod = ggplot(data=df.ai,
+LRR.prod = ggplot(data=df.ai,
                         aes(x = X, y = estimate, ymin =ci.lb , ymax = ci.ub ))+
   geom_point(aes(color=X))+
   geom_hline(yintercept =0, linetype=2)+
@@ -215,10 +192,10 @@ LRR.ai.prod = ggplot(data=df.ai,
   
   
   coord_flip()
-LRR.ai.prod
+LRR.prod
 
-# tiff("prod.ai.tiff", width = 20, height= 12, units ='cm', res=600)
-# LRR.ai.prod
+# tiff("prod.tiff", width = 20, height= 12, units ='cm', res=600)
+# LRR.prod
 # dev.off()
 
 
@@ -239,60 +216,15 @@ head(lrr.prod)
 #forest plot
 
 forest.prod<-viz_forest(x =preds[c("pred", "se")], variant="classic",summary_label ="Summary Effect", xlab = "Log Response Ratio")
-tiff("prod.forest.tiff", width = 16, height= 25, units ='cm', res=600)
-forest.prod
-dev.off()
+# tiff("prod.forest.tiff", width = 16, height= 25, units ='cm', res=600)
+# forest.prod
+# dev.off()
 
  
 
-#ai
-bubble.ai=ggplot(preds, aes(x=X.ai,y=pred))+
-  stat_smooth(data=preds,method="glm",formula=y~x,fullrange=T,se=TRUE,size=1, color="black"     )+ #, linetype=Biome 
-  geom_hline(yintercept=0, linetype="dashed", size=.5)+
-  # stat_smooth(data=preds.biome,aes(x=level.exp,y=ci.lb, color=Biome),method="glm",formula=y~x,fullrange=T,
-  #             se=FALSE,size=1,linetype=3)+
-  # stat_smooth(data=preds.biome,aes(x=level.exp,y=ci.ub),method="glm",formula=y~x,fullrange=T,
-  #             se=FALSE,size=1,linetype=3)+
-  # scale_linetype_manual(values=biome.line)+
-  geom_point(data=ROM.Biomass, aes(x=ai, y = yi, size=1/vi))+
-  ylab("Log Response Ratio")+
-  xlab("Aridity Index")+
-  theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=20),
-        axis.title=element_text(size=20), legend.position = "none")+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))+
-  ylim(-2,6)
-
-bubble.ai
-
-tiff("prod.ai.tiff", width = 16, height= 12, units ='cm', res=600)
-bubble.ai
-dev.off()
 
 
-bubble.p=ggplot(preds, aes(x=X.Precip,y=pred))+
-  stat_smooth(data=preds,method="glm",formula=y~x,fullrange=T,se=TRUE,size=1, color="black"     )+ #, linetype=Biome 
-  geom_hline(yintercept=0, linetype="dashed", size=.5)+
-  # stat_smooth(data=preds.biome,aes(x=level.exp,y=ci.lb, color=Biome),method="glm",formula=y~x,fullrange=T,
-  #             se=FALSE,size=1,linetype=3)+
-  # stat_smooth(data=preds.biome,aes(x=level.exp,y=ci.ub),method="glm",formula=y~x,fullrange=T,
-  #             se=FALSE,size=1,linetype=3)+
-  # scale_linetype_manual(values=biome.line)+
-  geom_point(data=ROM.Biomass, aes(x=Precip, y = yi, size=1/vi))+
-  ylab("Log Response Ratio")+
-  xlab("Precipitation (cm)")+
-  theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=20),
-        axis.title=element_text(size=20), legend.position = "none")+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))+
-  ylim(-2,6)
 
-
-bubble.p
-
-#  tiff("prod.p.tiff", width = 16, height= 12, units ='cm', res=600)
-# bubble.p
-#  dev.off()
 
 bubble.t=ggplot(preds, aes(x=X.time,y=pred))+
   stat_smooth(data=preds,method="glm",formula=y~x,fullrange=T,se=TRUE,size=1, color="black"     )+ #, linetype=Biome 
@@ -318,19 +250,6 @@ bubble.t
 # bubble.t
 # dev.off()
 
-
-library(cowplot)
-library(ggpubr)
-biomass.plot<-plot_grid(bubble.ai, bubble.t,
-                      labels = c("a", "b"),
-                      ncol = 2, nrow = 1)
-
-
-
- tiff("biomass.tiff", width = 16, height= 12, units ='cm', res=600)
-biomass.plot
- dev.off()
- 
  
  #plots with interactions
  summary(ROM.prod.int2) # interaction between burn and time
@@ -409,4 +328,8 @@ biomass.plot
    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
          panel.background = element_blank(), axis.line = element_line(colour = "black"))
  bubble.time.Seeded
+ 
+ # tiff("prod.time.seed.tiff", width = 16, height= 12, units ='cm', res=600)
+ # bubble.time.Seeded
+ # dev.off()
  
