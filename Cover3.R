@@ -199,17 +199,17 @@ LRR.ai.cover
 # dev.off()
 
 
+cover.temp.mod<-rma.mv(yi, vi, mods = ~Temp, 
+                                     random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
 
 preds<-predict(ROM.cover.bf, addx = TRUE)
-
-names(preds)
-
 preds<-as.data.frame(preds)
-names(preds)
 
+preds2<-predict(cover.temp.mod, addx = TRUE)
+preds2<-as.data.frame(preds2)
 
-
-
+head(preds)
+head(preds2)
 #forest plot
 
 forest.cover<-viz_forest(x =preds[c("pred", "se")], variant="classic",summary_label ="Summary Effect", xlab = "Log Response Ratio")
@@ -219,34 +219,32 @@ forest.cover<-viz_forest(x =preds[c("pred", "se")], variant="classic",summary_la
 # forest.cover
 # dev.off()
 
- 
-summary(ROM.cover.bf)
-
-
-
 bubble.temp=ggplot(preds, aes(x=X.Temp,y=pred))+
   stat_smooth(data=preds,method="glm",formula=y~x,fullrange=T,se=T,size=1, color="black"     )+ 
-
-    geom_hline(yintercept=0, linetype="dashed", size=.5)+
+  
+  geom_hline(yintercept=0, linetype="dashed", size=.5)+
   scale_color_manual(values=c("darkblue","forestgreen"))+
   scale_fill_manual(values=c("darkblue","forestgreen"))+
-  geom_point(data=ROM.Cover, aes(x=Temp, y = yi, size=1/vi))+
-  ylab("Log Response Ratio")+
-  xlab(expression('Mean annual temperature ('*~degree*C*')'))+
-  theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=15),
-        axis.title=element_text(size=15), legend.position = "none")+
+  geom_point(data=ROM.Cover, aes(x=Temp, y = yi, size=1/vi, alpha=.5))+
+  ylab("")+
+  xlab(expression('MAT ('*degree*C*')'))+
+  theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=10),
+        axis.title=element_text(size=10), legend.position = "none")+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         panel.background = element_blank(), axis.line = element_line(colour = "black"))+
-  ylim(-2,4.1)
+  ylim(-2,5)
 
 bubble.temp
+
+
 
 #  tiff("cover.temp.tiff", width = 16, height= 12, units ='cm', res=600)
 # bubble.temp
 #  dev.off()
 
+
 #seeded
-ROM.cover.bf
+
 mod1.seed.n<-rma.mv(yi, vi, mods = ~ Temp, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Seeded=="N", method = "ML")
 mod1.seed<-rma.mv(yi, vi, mods = ~ Temp, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Seeded=="Y", method = "ML")
 
@@ -258,7 +256,7 @@ preds.s$Seeded<-rep("Y", times = 87)
 
 preds.ns<-predict(mod1.seed.n, addx = TRUE)
 preds.ns<-as.data.frame(preds.ns)
-preds.ns$Seeded<-rep("N", times = 124)
+preds.ns$Seeded<-rep("N", times = 127)
 
 
 preds.seeded=rbind(preds.s,preds.ns)
@@ -266,15 +264,16 @@ preds.seeded=rbind(preds.s,preds.ns)
 names(preds.seeded)
 
 
-bubble.seed=ggplot(preds.seeded, aes(x=Seeded,y=pred))+
+bubble.seed=ggplot(preds.seeded, aes(x=Seeded,y=pred,color=Seeded))+
 geom_boxplot()+
 geom_hline(yintercept=0, linetype="dashed", size=.5)+
-
+  scale_color_manual(values=c("darkblue","forestgreen"))+
+  
   #geom_point(data=ROM.Cover, aes(x=Seeded, y = yi, size=1/vi))+
   ylab("")+
   xlab("Seeded")+
   theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=10),
-        axis.title=element_text(size=15), legend.position = "bottom")+
+        axis.title=element_text(size=10), legend.position = "bottom")+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         panel.background = element_blank(), axis.line = element_line(colour = "black"))+
   ylim(-2,4.1)
@@ -285,8 +284,8 @@ bubble.seed
 
 
 #burned
-mod1.burn.n<-rma.mv(yi, vi, mods = ~ Temp+Seeded+Biosolid.level..Mg.ha.1.+Multiple.application, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Burn=="N", method = "ML")
-mod1.burn<-rma.mv(yi, vi, mods = ~ Temp+Seeded+Biosolid.level..Mg.ha.1.+Multiple.application, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Burn=="Y", method = "ML")
+mod1.burn.n<-rma.mv(yi, vi, mods = ~ Temp, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Burn=="N", method = "ML")
+mod1.burn<-rma.mv(yi, vi, mods = ~ Temp, random = rand.var,data = ROM.Cover,slab = paste(author, year), subset = Burn=="Y", method = "ML")
 
 
 preds.burn<-predict(mod1.burn, addx = TRUE)
@@ -297,25 +296,27 @@ preds.b$burned<-rep("Y", times = 50)
 preds.nb<-predict(mod1.burn.n, addx = TRUE)
 
 preds.nb<-as.data.frame(preds.nb)
-preds.nb$burned<-rep("N", times = 161)
+preds.nb$burned<-rep("N", times = 164)
 names(preds.nb)
 names(preds.b)
-preds.burned=rbind(preds.b,preds.nb[,-11])
+preds.burned=rbind(preds.b,preds.nb)
 
 names(ROM.Cover)
 
-bubble.burn=ggplot(preds.burned, aes(x=burned,y=pred))+
-  geom_boxplot()+
-  geom_hline(yintercept=0, linetype="dashed", size=.5)+
 
+bubble.burn=ggplot(preds.burned, aes(x=burned,y=pred, color=burned))+
+  geom_boxplot()+
+  geom_jitter(data=ROM.Cover, aes(x=Burn, y = yi, size=1/vi, color=Burn,alpha=.5))+
+  geom_hline(yintercept=0, linetype="dashed", size=.5)+
+  scale_color_manual(values=c("black", "red"))+
   #geom_point(data=ROM.Cover, aes(x=Burn, y = yi, size=1/vi))+
   ylab("Log Response Ratio")+
   xlab("Burned")+
   theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=10),
-        axis.title=element_text(size=15), legend.position = "bottom")+
+        axis.title=element_text(size=10), legend.position = "none")+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         panel.background = element_blank(), axis.line = element_line(colour = "black"))+
-  ylim(-2,4.1)
+  ylim(-2,5)
 
 bubble.burn
 
@@ -348,30 +349,49 @@ bubble.Temp.Seeded=ggplot(preds.Seeded, aes(x=X.Temp,y=pred))+
   stat_smooth(data=preds.Seeded,aes(color= Seeded, fill=Seeded),method="glm",formula=y~x,fullrange=F,se=F,size=1     )+ #, linetype=Seeded 
   geom_ribbon( aes(ymin = preds.Seeded$ci.lb, ymax = preds.Seeded$ci.ub, fill = Seeded), alpha = .15) +
   geom_hline(yintercept=0, linetype="dashed", size=.5)+
-  geom_point(data=ROM.Cover, aes(x=Temp, y = yi, size=1/vi, color=Seeded, group=Seeded, fill=Seeded, shape=Seeded))+
+  geom_point(data=ROM.Cover, aes(x=Temp, y = yi, size=1/vi, alpha=.5,color=Seeded, group=Seeded, fill=Seeded, shape=Seeded))+
   ylab("")+
-  xlab("")+
+  xlab(expression('MAT ('*degree*C*')'))+
   scale_color_manual(values=c("darkblue","forestgreen"))+
 scale_fill_manual(values=c("darkblue","forestgreen"))+
   # 
   theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=10),
-        axis.title=element_text(size=15), legend.position = "none")+
+        axis.title=element_text(size=10), legend.position = "none")+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         panel.background = element_blank(), axis.line = element_line(colour = "black"))+
-  ylim(-2,4.5)
+  ylim(-2,5)
+
 bubble.Temp.Seeded
+
+bubble.Temp.Seeded.raw=ggplot(ROM.Cover, aes(x=Temp,y=yi, size=1/vi, shape=Seeded, fill=Seeded, color=Seeded))+
+  stat_smooth(aes(color= Seeded, fill=Seeded),method="glm",fullrange=F,se=T,size=1)+ 
+  #geom_ribbon( aes(ymin = preds.Seeded$ci.lb, ymax = preds.Seeded$ci.ub, fill = Seeded), alpha = .15) +
+  geom_hline(yintercept=0, linetype="dashed", size=.5)+
+  geom_point()+
+  ylab("")+
+  xlab(expression('MAT ('*degree*C*')'))+
+  scale_color_manual(values=c("darkblue","forestgreen"))+
+  scale_fill_manual(values=c("darkblue","forestgreen"))+
+  # 
+  theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=10),
+        axis.title=element_text(size=10), legend.position = "none")+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(), axis.line = element_line(colour = "black"))+
+  ylim(-2,5)
  
+bubble.Temp.Seeded.raw
+
 library(cowplot)
 library(ggpubr)
 
 
-cover.plot<-plot_grid(bubble.burn,bubble.seed,bubble.temp, bubble.Temp.Seeded, 
-                      labels = c("a", "b", "c", "d"),
-                      ncol = 2, nrow = 2)
+cover.plot<-plot_grid(bubble.burn,bubble.temp, bubble.Temp.Seeded, 
+                      labels = c("a", "b", "c"),
+                      ncol = 3, nrow = 1)
 
-
-
- tiff("cover.tiff", width = 20, height= 16, units ='cm', res=600)
 cover.plot
- dev.off()
+
+#  tiff("cover.tiff", width = 25, height= 8, units ='cm', res=600)
+# cover.plot
+#  dev.off()
  
