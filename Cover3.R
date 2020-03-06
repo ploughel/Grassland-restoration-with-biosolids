@@ -305,8 +305,8 @@ names(ROM.Cover)
 
 
 bubble.burn=ggplot(preds.burned, aes(x=burned,y=pred, color=burned))+
-  geom_boxplot()+
   geom_jitter(data=ROM.Cover, aes(x=Burn, y = yi, size=1/vi, color=Burn,alpha=.5))+
+  geom_boxplot()+
   geom_hline(yintercept=0, linetype="dashed", size=.5)+
   scale_color_manual(values=c("black", "red"))+
   #geom_point(data=ROM.Cover, aes(x=Burn, y = yi, size=1/vi))+
@@ -391,7 +391,7 @@ cover.plot<-plot_grid(bubble.burn,bubble.temp, bubble.Temp.Seeded,
 
 cover.plot
 
-#  tiff("cover.tiff", width = 25, height= 8, units ='cm', res=600)
-# cover.plot
-#  dev.off()
+ tiff("cover.tiff", width = 25, height= 8, units ='cm', res=600)
+cover.plot
+ dev.off()
  
