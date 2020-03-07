@@ -391,7 +391,7 @@ cover.plot<-plot_grid(bubble.burn,bubble.temp, bubble.Temp.Seeded,
 
 cover.plot
 
- tiff("cover.tiff", width = 25, height= 8, units ='cm', res=600)
-cover.plot
- dev.off()
+#  tiff("cover.tiff", width = 25, height= 8, units ='cm', res=600)
+# cover.plot
+#  dev.off()
  
