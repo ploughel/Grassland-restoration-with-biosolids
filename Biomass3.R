@@ -258,11 +258,11 @@ bubble.time=ggplot(preds, aes(x=X.time,y=pred))+
   #             se=FALSE,size=1,linetype=3)+
   # stat_smooth(data=preds,aes(x=X.time,y=ci.ub),method="glm",formula=y~x,fullrange=T,
   #             se=FALSE,size=1,linetype=3)+
-  geom_point(data=ROM.Biomass, aes(x=time, y = yi, size=1/vi))+
+  geom_point(data=ROM.Biomass, aes(x=time, y = yi, size=1/vi, alpha=.5))+
   ylab("Log Response Ratio")+
   xlab("")+
   theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=10),
-        axis.title=element_text(size=15), legend.position = "none")+
+        axis.title=element_text(size=10), legend.position = "none")+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         panel.background = element_blank(), axis.line = element_line(colour = "black"))+
   ylim(-3,6)
@@ -363,7 +363,7 @@ bubble.temp.spline
   scale_color_manual(values=c("black","red"))+
    scale_fill_manual(values=c("black","red"))+
    
-   geom_point(data=ROM.Biomass, aes(x=time, y = yi, size=1/vi, color=Burn..Y.N., group=Burn..Y.N., fill=Burn..Y.N., shape=Burn..Y.N.))+
+   geom_point(data=ROM.Biomass, aes(x=time, y = yi, size=1/vi, alpha=.5,color=Burn..Y.N., group=Burn..Y.N., fill=Burn..Y.N., shape=Burn..Y.N.))+
    ylab("")+
    xlab("Years since restoration")+
    # scale_color_manual(values=Burn.colors)+
@@ -409,7 +409,7 @@ bubble.temp.spline
    geom_hline(yintercept=0, linetype="dashed", size=.5)+
    scale_color_manual(values=c("darkblue","forestgreen"))+
    scale_fill_manual(values=c("darkblue","forestgreen"))+
-   geom_point(data=ROM.Biomass, aes(x=time, y = yi, size=1/vi, color=Seeded..Y.N., group=Seeded..Y.N., fill=Seeded..Y.N., shape=Seeded..Y.N.))+
+   geom_point(data=ROM.Biomass, aes(x=time, y = yi, size=1/vi, alpha=.5,color=Seeded..Y.N., group=Seeded..Y.N., fill=Seeded..Y.N., shape=Seeded..Y.N.))+
    ylab("")+
    xlab("")+
    # scale_color_manual(values=Seeded.colors)+
@@ -435,8 +435,8 @@ bubble.temp.spline
                        ncol = 3, nrow = 1)
  
  
- 
+ # 
  # tiff("biomass.tiff", width = 25, height= 8, units ='cm', res=600)
  # biomass.plot
  # dev.off()
- 
+ # 
