@@ -10,24 +10,26 @@ library(meta)
 library(effsize)
 library(esc)
 library(metaviz)
+library("glmulti")
 
 
 library(readxl)
+
 Biomass <- read_excel("~/Documents/GitHub/Grassland restoration with biosolids/Grassland-restoration-with-biosolids/data_sheets.xlsx", 
-                    sheet = "Biomass")
+                      sheet = "Biomass")
 
 
 ROM.Biomass <- escalc(n2i = Nc, n1i = Ne, m2i = Mc, m1i = Me, 
-                    sd2i = scimp, sd1i = seimp, data = Biomass, measure = "ROM", 
-                    append = TRUE )
+                      sd2i = scimp, sd1i = seimp, data = Biomass, measure = "ROM", 
+                      append = TRUE )
 
 
 ROM.Biomass<-ROM.Biomass %>% 
   filter(yi!="NA")
 
 HG.Biomass <- escalc(n2i = Nc, n1i = Ne, m2i = Mc, m1i = Me, 
-                   sd2i = scimp, sd1i = seimp, data = Biomass, measure = "SMD", 
-                   append = TRUE )
+                     sd2i = scimp, sd1i = seimp, data = Biomass, measure = "SMD", 
+                     append = TRUE )
 
 
 Hedges = HG.Biomass$yi
@@ -48,8 +50,6 @@ yfit.r <- dnorm(xfit.r, mean = mean(LRR), sd = sd(LRR))
 yfit.r <- yfit.r * diff(r$mids[1:2]) * length(LRR)
 # #
 lines(xfit.r, yfit.r, col = "black", lwd = 2)
-#
-
 
 #random effects model
 
@@ -58,12 +58,15 @@ rand.var=list(~ 1|Paper.ID/Case)
 rma.random <- rma.mv(yi = yi, V = vi, random = rand.var, data = ROM.Biomass, method = "ML")
 summary(rma.random)
 ran.df<-as.data.frame(coef(summary(rma.random)))
+plot(residuals(rma.random))
+
+rma.random.hg <- rma.mv(yi = yi, V = vi, random = rand.var, data = HG.Biomass, method = "ML")
+plot(residuals(rma.random.hg))
 
 
 #-----------------------# model selection 
 # library(xlsx)
 # library(rJava)
-# library("glmulti")
 # 
 # rma.glmulti<- function(formula, data, ...)
 #   rma(formula, vi, data=data, method ="ML",...)
@@ -81,8 +84,7 @@ ran.df<-as.data.frame(coef(summary(rma.random)))
 
 
 
-ROM.ai.rma<-rma.mv(yi, vi, mods = ~time+Temp+Precip+Mixture..yes.no.+Burn..Y.N.+
-                     Seeded..Y.N.+Severe.Disturbance, 
+ROM.ai.rma<-rma.mv(yi, vi, mods = ~Burn..Y.N.+ time+ Temp+ Severe.Disturbance+ Mixture..yes.no.+ Seeded..Y.N., 
                        random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
 
 #models with interactions
@@ -161,6 +163,9 @@ vif(ROM.prod.int1, table = TRUE)
 vif(ROM.prod.int2, table = TRUE)
 vif(ROM.prod.int3, table=TRUE)
 
+ROM.ai.rma
+ROM.prod.int2
+ROM.prod.int3
 #=========================================graphs=========
 
 
@@ -209,9 +214,6 @@ names(preds)
 
 
 
- # write.csv(preds, file = "lrr.prod.csv")
-lrr.prod<-read.csv("lrr.prod.csv", header = TRUE)
-head(lrr.prod)
 
 #forest plot
 
@@ -221,13 +223,12 @@ forest.prod<-viz_forest(x =preds[c("pred", "se")], variant="classic",summary_lab
 # dev.off()
 
  
+bubble.time.auto=ggplot(preds, aes(x=X.time,y=pred))+
+  stat_smooth(data=preds,method="auto",formula=y~x,fullrange=T,se=T,size=1, color="black", alpha=0.9)+ #, linetype=Biome 
 
-
-
-
-
-bubble.t=ggplot(preds, aes(x=X.time,y=pred))+
-  stat_smooth(data=preds,method="glm",formula=y~x,fullrange=T,se=TRUE,size=1, color="black"     )+ #, linetype=Biome 
+  geom_hline(yintercept=0, linetype="dashed", size=.5)+
+  scale_color_manual(values=c("darkblue","forestgreen"))+
+  scale_fill_manual(values=c("darkblue","forestgreen"))+
   geom_hline(yintercept=0, linetype="dashed", size=.5)+
   # stat_smooth(data=preds.biome,aes(x=level.exp,y=ci.lb, color=Biome),method="glm",formula=y~x,fullrange=T,
   #             se=FALSE,size=1,linetype=3)+
@@ -237,19 +238,88 @@ bubble.t=ggplot(preds, aes(x=X.time,y=pred))+
   geom_point(data=ROM.Biomass, aes(x=time, y = yi, size=1/vi))+
   ylab("Log Response Ratio")+
   xlab("Years Since Restoration")+
-  theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=20),
-        axis.title=element_text(size=20), legend.position = "none")+
+  theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=15),
+        axis.title=element_text(size=15), legend.position = "none")+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         panel.background = element_blank(), axis.line = element_line(colour = "black"))+
   ylim(-2,6)
 
 
-bubble.t
+bubble.time.auto
 
-# tiff("prod.t.tiff", width = 16, height= 12, units ='cm', res=600)
-# bubble.t
+# tiff("prod.time.auto.tiff", width = 16, height= 12, units ='cm', res=600)
+# bubble.time.auto
 # dev.off()
 
+
+bubble.time=ggplot(preds, aes(x=X.time,y=pred))+
+  stat_smooth(data=preds,method="glm",formula=y~x,fullrange=T,se=T,size=1, color="black"     )+ #, linetype=Biome 
+  geom_hline(yintercept=0, linetype="dashed", size=.5)+
+  # stat_smooth(data=preds.biome,aes(x=level.exp,y=ci.lb, color=Biome),method="glm",formula=y~x,fullrange=T,
+  #             se=FALSE,size=1,linetype=3)+
+  # stat_smooth(data=preds.biome,aes(x=level.exp,y=ci.ub),method="glm",formula=y~x,fullrange=T,
+  #             se=FALSE,size=1,linetype=3)+
+  # scale_linetype_manual(values=biome.line)+
+  geom_point(data=ROM.Biomass, aes(x=time, y = yi, size=1/vi))+
+  ylab("Log Response Ratio")+
+  xlab("Years Since Restoration")+
+  theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=10),
+        axis.title=element_text(size=10), legend.position = "none")+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(), axis.line = element_line(colour = "black"))+
+  ylim(-2,6)
+
+
+bubble.time
+
+# tiff("prod.time.tiff", width = 16, height= 12, units ='cm', res=600)
+# bubble.time
+# dev.off()
+
+bubble.temp.auto=ggplot(preds, aes(x=X.Temp,y=pred))+
+  stat_smooth(data=preds,method="auto",formula=y~x,fullrange=T,se=TRUE,size=1, color="black"     )+ #, linetype=Biome 
+  geom_hline(yintercept=0, linetype="dashed", size=.5)+
+  # stat_smooth(data=preds.biome,aes(x=level.exp,y=ci.lb, color=Biome),method="glm",formula=y~x,fullrange=T,
+  #             se=FALSE,size=1,linetype=3)+
+  # stat_smooth(data=preds.biome,aes(x=level.exp,y=ci.ub),method="glm",formula=y~x,fullrange=T,
+  #             se=FALSE,size=1,linetype=3)+
+  # scale_linetype_manual(values=biome.line)+
+  geom_point(data=ROM.Biomass, aes(x=Temp, y = yi, size=1/vi))+
+  ylab("Log Response Ratio")+
+  xlab(expression('MAT ('*~degree*C*')'))+
+  theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=10),
+        axis.title=element_text(size=10), legend.position = "none")+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(), axis.line = element_line(colour = "black"))+
+  ylim(-2,6)+
+  xlim(0,20)
+
+
+bubble.temp.auto
+# 
+# tiff("prod.temp.auto.tiff", width = 16, height= 12, units ='cm', res=600)
+# bubble.temp.auto
+# dev.off()
+
+bubble.temp=ggplot(preds, aes(x=X.Temp,y=pred))+
+  stat_smooth(data=preds,method="lm",formula=y~x,fullrange=F,se=T,size=1, color="black" , level=.95)+ #, linetype=Biome 
+  geom_hline(yintercept=0, linetype="dashed", size=.5)+
+  geom_point(data=ROM.Biomass, aes(x=Temp, y = yi, size=1/vi))+
+  ylab("")+
+  xlab(expression('MAT ('*~degree*C*')'))+
+  theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=10),
+        axis.title=element_text(size=10), legend.position = "none")+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(), axis.line = element_line(colour = "black"))+
+  ylim(-2,6)+
+  xlim(0,20)
+
+
+bubble.temp
+# 
+# tiff("prod.temp.auto.tiff", width = 16, height= 12, units ='cm', res=600)
+# bubble.temp.auto
+# dev.off()
  
  #plots with interactions
  summary(ROM.prod.int2) # interaction between burn and time
@@ -268,27 +338,33 @@ bubble.t
  preds.b.n<-as.data.frame(preds.b.n)
  dim(preds.b.n)
  
- preds.b.n$Burn<-rep("N", times = 234)
+ preds.b.n$Burn<-rep("N", times = 232)
  
  preds.burn=rbind(preds.b,preds.b.n)
  names(preds.burn)
 
  bubble.time.Burn=ggplot(preds.burn, aes(x=X.time,y=pred))+
-   stat_smooth(data=preds.burn,aes(color= Burn, fill=Burn),method="auto",formula=y~x,fullrange=T,se=TRUE,size=1     )+ #, linetype=Burn 
+   stat_smooth(data=preds.burn,aes(color= Burn),method="lm",formula=y~x, level =.95,fullrange=F,se=F,size=1)+ #, linetype=Burn 
+   geom_ribbon( aes(ymin = preds.burn$ci.lb, ymax = preds.burn$ci.ub, fill = Burn), alpha = .15) +
+   #scale_linetype_manual(values=biome.line)+
    geom_hline(yintercept=0, linetype="dashed", size=.5)+
-
+  scale_color_manual(values=c("black","red"))+
+   scale_fill_manual(values=c("black","red"))+
+   
    geom_point(data=ROM.Biomass, aes(x=time, y = yi, size=1/vi, color=Burn..Y.N., group=Burn..Y.N., fill=Burn..Y.N., shape=Burn..Y.N.))+
    ylab("Log Response Ratio")+
    xlab("Years since restoration")+
    # scale_color_manual(values=Burn.colors)+
    # scale_fill_manual(values=Burn.colors)+
    # 
-   theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=15),
-         axis.title=element_text(size=15), legend.position = "bottom")+
+   theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=10),
+         axis.title=element_text(size=10), legend.position = "none")+
    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
          panel.background = element_blank(), axis.line = element_line(colour = "black"))
  bubble.time.Burn
  
+
+
  # tiff("prod.time.burn.tiff", width = 16, height= 12, units ='cm', res=600)
  # bubble.time.Burn
  # dev.off()
@@ -308,23 +384,26 @@ bubble.t
  preds.s.n<-as.data.frame(preds.s.n)
  dim(preds.s.n)
  
- preds.s.n$Seeded<-rep("N", times = 145)
+ preds.s.n$Seeded<-rep("N", times = 143)
  
  preds.Seeded=rbind(preds.s,preds.s.n)
  names(preds.Seeded)
  
  bubble.time.Seeded=ggplot(preds.Seeded, aes(x=X.time,y=pred))+
-   stat_smooth(data=preds.Seeded,aes(color= Seeded, fill=Seeded),method="glm",formula=y~x,fullrange=T,se=TRUE,size=1     )+ #, linetype=Seeded 
-   geom_hline(yintercept=0, linetype="dashed", size=.5)+
+   stat_smooth(data=preds.Seeded,aes(color= Seeded, fill=Seeded),method="glm",formula=y~x,fullrange=F,se=F,size=1     )+ #, linetype=Seeded 
+   geom_ribbon( aes(ymin = preds.Seeded$ci.lb, ymax = preds.Seeded$ci.ub, fill = Seeded), alpha = .15) +
    
+   geom_hline(yintercept=0, linetype="dashed", size=.5)+
+   scale_color_manual(values=c("darkblue","forestgreen"))+
+   scale_fill_manual(values=c("darkblue","forestgreen"))+
    geom_point(data=ROM.Biomass, aes(x=time, y = yi, size=1/vi, color=Seeded..Y.N., group=Seeded..Y.N., fill=Seeded..Y.N., shape=Seeded..Y.N.))+
-   ylab("Log Response Ratio")+
+   ylab("")+
    xlab("Years since restoration")+
    # scale_color_manual(values=Seeded.colors)+
    # scale_fill_manual(values=Seeded.colors)+
    # 
-   theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=15),
-         axis.title=element_text(size=15), legend.position = "bottom")+
+   theme(axis.ticks.length=unit(.5, "cm"), axis.text=element_text(size=10),
+         axis.title=element_text(size=10), legend.position = "none")+
    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
          panel.background = element_blank(), axis.line = element_line(colour = "black"))
  bubble.time.Seeded
@@ -332,4 +411,18 @@ bubble.t
  # tiff("prod.time.seed.tiff", width = 16, height= 12, units ='cm', res=600)
  # bubble.time.Seeded
  # dev.off()
+
+ library(cowplot)
+ library(ggpubr)
+ 
+ 
+ biomass.plot<-plot_grid(bubble.time, bubble.temp, bubble.time.Burn,bubble.time.Seeded,
+                       labels = c("a", "b", "c","d"),
+                       ncol = 2, nrow = 2)
+ 
+ 
+ 
+ tiff("biomass.tiff", width = 20, height= 14, units ='cm', res=600)
+ biomass.plot
+ dev.off()
  
