@@ -183,8 +183,7 @@ bubble.temp=ggplot(preds2, aes(x=X.Temp,y=pred))+
   geom_ribbon(aes(ymax=ci.lb, ymin=ci.ub), fill="gray83", alpha=.5) +
   stat_smooth(method="glm",fullrange=F,se=F,size=1, color="black")+ 
   geom_hline(yintercept=0, linetype="dashed", size=.5)+
-  scale_color_manual(values=c("darkblue","forestgreen"))+
-  scale_fill_manual(values=c("darkblue","forestgreen"))+
+  
   geom_point(data=ROM.Cover, aes(x=Temp, y = yi, size=1/vi, alpha=.5))+
   ylab("")+
   xlab(expression('MAT ('*degree*C*')'))+
