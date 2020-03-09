@@ -195,8 +195,7 @@ preds2<-as.data.frame(preds2)
 
 bubble.time2=ggplot(preds2, aes(x=X.time,y=pred))+
   geom_ribbon(aes(ymax=ci.lb, ymin=ci.ub), fill="gray83", alpha=.5) +
-  # geom_line(aes(x=X.time, y = ci.lb), color="gray60")+
-  # geom_line(aes(x=X.time, y = ci.ub), color="gray60")+
+
   stat_smooth(data=preds2,method="glm",fullrange=F,se=F, size=1, color="black")+ #, linetype=Biome
   geom_hline(yintercept=0, linetype="dashed", size=.5)+
   geom_point(data=ROM.Biomass, aes(x=time, y = yi, size=1/vi, alpha=.5))+
