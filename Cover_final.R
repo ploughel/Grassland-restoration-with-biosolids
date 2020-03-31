@@ -79,7 +79,7 @@ plot(residuals(rma.random.hg))
 #                      level=1, crit="aicc", confsetsize=ROM.cover.size, fitfunction = rma.glmulti)
 # 
 
-plot(ROM.cover.bf, type="s")
+#plot(ROM.cover.bf, type="s")
 
 #best fit model
 ROM.cover.bf<-rma.mv(yi, vi, mods = ~Temp+Seeded+Burn+Multiple.application+Precip+S.dist, 
@@ -291,7 +291,7 @@ cover.plot<-plot_grid(bubble.burn,bubble.temp, bubble.Temp.Seeded,
 
 cover.plot
 
- tiff("cover.tiff", width = 25, height= 8, units ='cm', res=600)
-cover.plot
- dev.off()
- 
+#  tiff("cover.tiff", width = 25, height= 8, units ='cm', res=600)
+# cover.plot
+#  dev.off()
+#  
