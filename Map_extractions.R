@@ -144,6 +144,6 @@ df.xy<-cbind(extract(r, xy, df=T), xy)
 pal <- colorRampPalette(c("firebrick", "yellow", "forestgreen", "cyan","royalblue4", "purple4"))
 
 plot(r, col=pal(50))
-points(xy, pch=19)
+points(xy, pch=19, cex=.65)
 
 
