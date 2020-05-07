@@ -15,7 +15,7 @@ library("glmulti")
 
 library(readxl)
 
-Biomass <- read_excel("~/Documents/GitHub/Grassland restoration with biosolids/Grassland-restoration-with-biosolids/data_sheets.xlsx", 
+Biomass <- read_excel("~/Documents/GitHub/Grassland restoration with biosolids/Grassland-restoration-with-biosolids/data_sheetscorr.xlsx", 
                       sheet = "Biomass")
 
 
@@ -80,7 +80,7 @@ summary(rma.random)
 
 
 
-ROM.ai.rma<-rma.mv(yi, vi, mods = ~Burn..Y.N.+ time+ Temp+ Severe.Disturbance+ Mixture..yes.no.+ Seeded..Y.N., 
+ROM.ai.rma<-rma.mv(yi, vi, mods = ~Burn..Y.N.+  Temp+ Severe.Disturbance+Mixture..yes.no.+time+  Seeded..Y.N., 
                        random = rand.var,data = ROM.Biomass,slab = paste(author, year), method="ML")
 
 
