@@ -18,7 +18,7 @@ library(rJava)
 library("glmulti")
 
 
-Cover <- read_excel("~/Documents/GitHub/Grassland restoration with biosolids/Grassland-restoration-with-biosolids/data_sheets.xlsx", 
+Cover <- read_excel("~/Documents/GitHub/Grassland restoration with biosolids/Grassland-restoration-with-biosolids/data_sheetscorr.xlsx", 
                     sheet = "Cover")
 
 
@@ -66,23 +66,23 @@ rma.random.hg <- rma.mv(yi = yi, V = vi, random = rand.var, data = HG.Cover, met
 plot(residuals(rma.random.hg))
 
 #-----------------------# model selection 
-# rma.glmulti<- function(formula, data, ...)
-#   rma(formula, vi, data=data, method ="ML",...)
+rma.glmulti<- function(formula, data, ...)
+  rma(formula, vi, data=data, method ="ML",...)
 
-# ROM.cover.size <- glmulti(yi ~Biosolid.level..Mg.ha.1.+yeartrans+Temp+Precip+Mixture+Burn+
-#                          Seeded+Multiple.application+S.dist+ai, data=ROM.Cover, method="d",
-#                       level=1, crit="aicc", fitfunction = rma.glmulti)
-# 
-# 
-# ROM.cover.bf <- glmulti(yi ~ Biosolid.level..Mg.ha.1.+yeartrans+Temp+Precip+Mixture+Burn+
-#                         Seeded+Multiple.application+S.dist+ai, data=ROM.Cover, method="h",
-#                      level=1, crit="aicc", confsetsize=ROM.cover.size, fitfunction = rma.glmulti)
-# 
+ROM.cover.size <- glmulti(yi ~Biosolid.level..Mg.ha.1.+yeartrans+Temp+Precip+Mixture+Burn+
+                         Seeded+Multiple.application+S.dist+ai, data=ROM.Cover, method="d",
+                      level=1, crit="aicc", fitfunction = rma.glmulti)
 
-#plot(ROM.cover.bf, type="s")
+
+ROM.cover.bf <- glmulti(yi ~ Biosolid.level..Mg.ha.1.+yeartrans+Temp+Precip+Mixture+Burn+
+                        Seeded+Multiple.application+S.dist+ai, data=ROM.Cover, method="h",
+                     level=1, crit="aicc", confsetsize=ROM.cover.size, fitfunction = rma.glmulti)
+
+
+plot(ROM.cover.bf, type="s")
 
 #best fit model
-ROM.cover.bf<-rma.mv(yi, vi, mods = ~Temp+Seeded+Burn+Multiple.application+Precip+S.dist, 
+ROM.cover.bf<-rma.mv(yi, vi, mods = ~Temp+Seeded+Burn+Precip+S.dist+Multiple.application, 
                        random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
 
 
