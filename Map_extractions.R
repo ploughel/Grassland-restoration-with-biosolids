@@ -25,14 +25,15 @@ Cover <- read_excel("~/Documents/GitHub/Grassland restoration with biosolids/Gra
 Biomass <- read_excel("~/Documents/GitHub/Grassland restoration with biosolids/Grassland-restoration-with-biosolids/data_sheets.xlsx", 
                        sheet = "Biomass")
 
-
+Diversity <- read_excel("~/Documents/GitHub/Grassland restoration with biosolids/Grassland-restoration-with-biosolids/data_sheets.xlsx", 
+                      sheet = "Diversity(H)")
 
 #
 
 world<-map_data('world')
 
 
-names
+names(Diversity)
 Biomass$lat<-Biomass$`Coordinates (Latitude)`
 Biomass$long<-Biomass$`Coordinate (longitude)`
 
@@ -46,6 +47,8 @@ Richness$long<-Richness$Longitude
 Exotics$lat<-Exotics$`Coordinates (Latitude)`
 Exotics$long<-Exotics$`Coordinate (longitude)`
 
+Diversity$lat<-Diversity$Latitude
+Diversity$long<-Diversity$Longitude
 
 
 list<-rep("Productivity",length(Biomass$author))
@@ -76,11 +79,14 @@ papers<-Exotics[,1:4]
 
 e.map <- cbind(list, list.e.lat.long,papers)
 
-names(cover.map)
+list<-rep("Diversity",length(Diversity$author))
+list.d.lat.long<-Diversity[,29:30]
+papers<-Diversity[,1:4]
 
-Map<-rbind(BH.map,rich.map,e.map, cover.map)
+d.map <- cbind(list, list.d.lat.long,papers)
 
-names(Map)
+Map<-rbind(BH.map,rich.map,e.map, cover.map, d.map)
+
 p <- ggplot(legend=FALSE) +
   geom_polygon( data=world, aes(x=long, y=lat,group=group), fill="grey") +
   #theme(panel.background = theme_blank()) +
@@ -146,4 +152,28 @@ pal <- colorRampPalette(c("firebrick", "yellow", "forestgreen", "cyan","royalblu
 plot(r, col=pal(50))
 points(xy, pch=19, cex=.65)
 
+#--------------Map with MAT
+r <- getData("worldclim",var="bio",res=10)
+names(r)
+r <- r[[c(1)]]
+names(r) <- c("Temp")
+plot(r)
+
+xy<- cbind(lons,lats)
+
+points <- SpatialPoints(xy, proj4string = r@crs)
+values <- extract(r,points)/10
+
+
+df <- cbind.data.frame(coordinates(points),values)
+
+df.xy<-cbind(extract(r, xy, df=T), xy)
+# write.csv(df.xy,file="ai_all.csv")
+
+pal <- colorRampPalette(c("purple4","royalblue4","royalblue","darkolivegreen3","yellow","goldenrod","orange","firebrick"))
+
+
+plot(r, col=pal(50))
+map("world", add=TRUE, col="gray")
+points(xy, pch=19, cex=.65)
 
