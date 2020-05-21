@@ -82,7 +82,7 @@ ROM.cover.bf <- glmulti(yi ~ Biosolid.level..Mg.ha.1.+yeartrans+Temp+Precip+Mixt
 plot(ROM.cover.bf, type="s")
 
 #best fit model
-ROM.cover.bf<-rma.mv(yi, vi, mods = ~Temp+Seeded+Burn+Precip+S.dist+Multiple.application, 
+ROM.cover.bf<-rma.mv(yi, vi, mods = ~Temp+S.dist+Burn+Multiple.application+Seeded+Precip, 
                        random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
 
 
@@ -97,19 +97,24 @@ ROM.cover.int.2<-rma.mv(yi, vi, mods = ~Temp*Burn,
 ROM.cover.int.3<-rma.mv(yi, vi, mods = ~Temp*Multiple.application, 
                        random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
 
+ROM.cover.int.4<-rma.mv(yi, vi, mods = ~Temp*S.dist, 
+                        random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
 
-ROM.cover.int.4<-rma.mv(yi, vi, mods = ~Precip*Seeded, 
+ROM.cover.int.5<-rma.mv(yi, vi, mods = ~Precip*Seeded, 
                        random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
 
-ROM.cover.int.5<-rma.mv(yi, vi, mods = ~Precip*Burn, 
+ROM.cover.int.6<-rma.mv(yi, vi, mods = ~Precip*Burn, 
                        random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
 
-ROM.cover.int.6<-rma.mv(yi, vi, mods = ~Precip*Multiple.application, 
+ROM.cover.int.7<-rma.mv(yi, vi, mods = ~Precip*Multiple.application, 
                        random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
+ROM.cover.int.8<-rma.mv(yi, vi, mods = ~Precip*S.dist, 
+                        random = rand.var,data = ROM.Cover,slab = paste(author, year), method="ML")
 
 
 mods = list(ROM.cover.bf,ROM.cover.int.1, ROM.cover.int.2,
-            ROM.cover.int.3, ROM.cover.int.4,ROM.cover.int.5, ROM.cover.int.6)
+            ROM.cover.int.3, ROM.cover.int.4,ROM.cover.int.5, ROM.cover.int.6,
+            ROM.cover.int.7, ROM.cover.int.8)
 
 
 
@@ -157,7 +162,10 @@ cbind(pseudo.r2,marg.r2,cond.r2,aicc,I2)
 vif(ROM.cover.int.1, table=TRUE)
 ROM.cover.bf
 ROM.cover.int.1
-
+ROM.cover.int.2
+ROM.cover.int.4
+ROM.cover.int.5
+ROM.cover.int.8
 
 
 
